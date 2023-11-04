@@ -1,0 +1,29 @@
+.footer{
+    width: 100%;
+    width: 1024px;
+    font-size: 1rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.footerLists{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footerList{
+    list-style: none;
+    padding: 0;
+}
+.footerListItems{
+    color: blueviolet;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+}
+.footerText{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}

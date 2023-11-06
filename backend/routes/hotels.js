@@ -14,7 +14,7 @@ router.put('/:id', verifyAdmin, updateHotel);
 //DELETE
 router.delete('/:id',verifyAdmin, deleteHotel);
 //GET A SINGLE HOTEL
-router.get('/find/:id', getSingleHotel);
+router.get('/find/:id', getSingleHotel); //this is endpoint for hotel.jsx
 //GET ALL
 router.get('/', getAllHotels)
 router.get('/countByCity', countByCity)

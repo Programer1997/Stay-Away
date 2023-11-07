@@ -14,6 +14,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/authContext";
 
 
 
@@ -38,6 +39,8 @@ const Header = ({ type }) => {
     });
   //navigate hook for /hotels:
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
+ 
   
     //handle options:
     const handleOption = (name, operation) => {
@@ -87,7 +90,7 @@ const Header = ({ type }) => {
               <p className="headerDesc">
                     From us to you traveler, you can have an awesome experience with us, you're welcome!
               </p>
-              <button className="headerBtn">Sign in / Register</button>
+              {!user && <button className="headerBtn">Sign in / Register</button>}
               <div className="headerSearch">
                 <div className="headerSearchItem">
                   <FontAwesomeIcon icon={faBed} className="headerIcon" />

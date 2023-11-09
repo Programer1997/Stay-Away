@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { SearchContextProvider } from './context/SearchContext';
 import { AuthContextProvider } from "./context/authContext";
+import 'bootstrap';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

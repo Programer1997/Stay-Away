@@ -9,10 +9,6 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 //Enviroment variables / variables de entorno / para proteger datas sencibles que no quieres que otros vean
-
-
-
-
 dotenv.config()
 const PORT = process.env.PORT || 8000;
 

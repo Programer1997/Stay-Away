@@ -53,7 +53,7 @@
   }
   
   .headerSearch {
-    height: 30px;
+    height: 55px;
     background-color: white;
     border: 3px solid #910e86;
     display: flex;
@@ -62,9 +62,10 @@
     padding: 10px 0px;
     border-radius: 5px;
     position: absolute;
-    bottom: -54px;
+    bottom: -60px;
     width: 100%;
     max-width: 1024px;
+    
   }
   
   .headerIcon {

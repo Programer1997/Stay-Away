@@ -2,9 +2,7 @@ import axios from "axios"
 import { AuthContext } from "../../context/authContext"
 import "./login.css"
 import { useContext, useState } from "react"
-import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 
 
@@ -36,8 +34,14 @@ const handleChange = (e) => {
     const navigate = useNavigate()
 
   return (
-    <div>
-        <Navbar />  
+    <div className="login">
+          <div className="nav">
+                <div className="navLogin">
+                    <h1 className="logo">StayAway</h1>                   
+                </div>
+          </div>
+
+
     <div className="login">
         
       <div className="lContainer">
@@ -59,6 +63,7 @@ const handleChange = (e) => {
           Login
         </button>
         {error && <span>{error.message}</span>}
+        <span className="registerLink">Dont have an account yet? You can <Link>register now!</Link></span>
       </div>
     </div>
     </div>

@@ -17,6 +17,7 @@
   .logo{
     font-weight: 500;
     cursor: pointer;
+    background-color: white;
     padding: 5px;
     border-radius: 10px;
     width: 80px;
@@ -36,7 +37,7 @@
     border-radius: 10px;
     transition: 0.5s;
     position: relative;
-
+    
   }
   .logoutBtn:hover{
     background-color: rgb(134, 47, 169);

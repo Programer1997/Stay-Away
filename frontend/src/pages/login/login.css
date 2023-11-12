@@ -3,6 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
   }
   
   .lContainer {
@@ -34,3 +35,21 @@
     background-color: #0071c28c;
     cursor: not-allowed;
   }
+  .navLogin{
+    display: flex;
+  }
+
+  .registerLink{
+    text-decoration: none;
+    margin-top: 1.5rem;
+    color: blueviolet;
+    font-size: small;
+    text-align: center;
+  }
+  .logo{
+    color: blueviolet;
+  }
+  nav{
+    background-color: blueviolet;
+  }
+  

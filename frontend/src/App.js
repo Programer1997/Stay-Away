@@ -5,6 +5,7 @@ import List from './pages/list/List';
 import Hotel from './pages/hotel/Hotel';
 import Login from './pages/login/Login';
 import Register from './pages/register/register.jsx';
+import DashBoardAdmin from './pages/dashboardAdmin/dashBoardAdmin.jsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/hotels/:id' element={<Hotel />}/>
           <Route path='/login' element={<Login />}/>
           <Route exact path='/register' element={<Register />}/>
+          <Route exact path='/dashBoardAdmin' element={<DashBoardAdmin />}/>
         </Routes>
     </BrowserRouter>
   );

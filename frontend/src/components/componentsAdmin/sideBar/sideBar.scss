@@ -1,0 +1,65 @@
+.container {
+    width: 20%;
+    margin: 0;
+    background-color: rgb(248,249,250);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    align-items: center;
+
+    .logoDashBoard { 
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 80%;
+        
+    .img { 
+        margin-right: 1em;
+        width: 20%;
+    }
+    .titleDash { 
+        font-size: 2em;
+        
+    }
+
+}
+
+.navbar-one { 
+    list-style-type: none;
+    margin: 0;
+    width: 100%;
+    
+    .list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 80%;
+        margin: 0;
+        margin-bottom: 1em;
+        padding: 8px;
+        img { 
+            width: 15%;
+            margin-right: 1em;
+        }
+        p{
+            font-size: 1em;
+        }
+
+    }
+    .list_two {
+        background-color: darken(white, 20%);
+        border-radius: 10px;
+    }
+    .list:hover{
+        cursor: pointer;
+        background-color: rgb(13,110,253);
+        border-radius: 10px;
+        color: white;
+    }
+}
+.supportTitle { 
+    font-size: 1.8em;
+}
+}

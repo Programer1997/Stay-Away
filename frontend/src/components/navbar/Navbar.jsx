@@ -6,43 +6,38 @@ import { AuthContext } from "../../context/authContext";
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("user");
     navigate("/login");
   };
-  
 
   return (
     <div className="navbar">
-    <div className="navContainer">
-      <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-        <span className="logo">StayAway</span>
-      </Link>
-      {user ? (
-        <>
-          <span className="username">{user.username}</span>
-          <button className="logoutBtn" onClick={handleLogout}>Log out</button>
-        </>
-      ) : (
-        <div className="navItems">
-          <Link to="/register">
-            <button className="navButton">Register</button>
-          </Link>
-          <Link to="/login">
-            <button className="navButton">Login</button>
-          </Link>
-        </div>
-      )}
+      <div className="navContainer">
+        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+          <span className="logo">StayAway</span>
+        </Link>
+        {user ? (
+          <>
+            <span className="username">{user.username}</span>
+            <button className="logoutBtn" onClick={handleLogout}>
+              Log out
+            </button>
+          </>
+        ) : (
+          <div className="navItems">
+            <Link to="/register">
+              <button className="navButton">Register</button>
+            </Link>
+            <Link to="/login">
+              <button className="navButton">Login</button>
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-
-
-
-
-
 
     // <div className="navbar">
     //   <div className="navContainer">
@@ -58,7 +53,7 @@ const Navbar = () => {
     //           <button className="navButton">Register</button>
     //         </Link>
     //           <button className="navButton" onClick={handleLogout}>Login</button>
-   
+
     //       </div>
     //     )}
     //   </div>

@@ -1,0 +1,14 @@
+.dashBoardPanel{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    
+    .panel{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+}  

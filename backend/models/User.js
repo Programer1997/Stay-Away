@@ -2,15 +2,15 @@ import mongoose from "mongoose"
 const { Schema } = mongoose;
 
 const userSchema = new Schema({  
+    //Abraham wa here :  addition "firstName" & "lastName","username" will be optional and "email" will be UNIQUE
+    //conflicts on data base FIXED !
     firstName: { 
         type: String,
         required: true,
-        
     },
     lastName: { 
         type: String,
         required: true,
-        
     },
     username: { 
         type: String,

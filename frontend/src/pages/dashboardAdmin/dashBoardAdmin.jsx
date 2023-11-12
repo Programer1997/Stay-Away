@@ -6,7 +6,6 @@ export default function DashBoardAdmin() {
   return (
     <>
       <SideBar />
-      <h1>Hellow world</h1>
     </>
   );
 }

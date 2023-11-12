@@ -17,8 +17,31 @@
   .logo{
     font-weight: 500;
     cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    width: 80px;
+    height: 30px;
   }
-  
+  .logo:hover{
+    background-color: rgb(194, 184, 184);
+    color: rgb(128, 9, 240);
+    transition: 0.5s;
+  }
+  .logoutBtn{
+    padding: 3px;
+    margin-left: 20px;
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    transition: 0.5s;
+    position: relative;
+
+  }
+  .logoutBtn:hover{
+    background-color: rgb(134, 47, 169);
+  }
+
   .navButton{
     margin-left: 20px;
     border: none;

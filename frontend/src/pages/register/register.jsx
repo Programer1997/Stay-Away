@@ -20,7 +20,7 @@ export default function Register() {
   const handleSubmit = (event) => {
     event.preventDefault();
     postDataServer(formData);
-    console.log("button submit correctly working");
+    console.log("form data from Frontend (register component)  : ");
     console.log(formData);
     clean();
     navigate("/login");
@@ -69,27 +69,25 @@ export default function Register() {
             <div className="form-floating mb-3" id="nameFL">
               <input
                 className="form-control"
-                id="floatingInput"
                 type="text"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
                 placeholder="name@example.com"
               />
-              <label for="floatingInput">First name</label>
+              <label>First name</label>
             </div>
 
             <div className="form-floating mb-3" id="nameFL">
               <input
                 className="form-control"
-                id="floatingInput"
                 type="text"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
                 placeholder="name@example.com"
               />
-              <label for="floatingInput">Last name</label>
+              <label>Last name</label>
             </div>
           </div>
 
@@ -101,22 +99,20 @@ export default function Register() {
               onChange={handleChange}
               className="form-control"
               placeholder="name@example.com"
-              id="floatingInput"
             />
-            <label for="floatingInput">Email address</label>
+            <label>Email address</label>
           </div>
 
           <div className="form-floating mb-3" id="elementForm">
             <input
               className="form-control"
-              id="floatingInput"
               type="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               placeholder=""
             />
-            <label for="floatingInput">Password</label>
+            <label>Password</label>
           </div>
 
           <div className="buttonsRegister">

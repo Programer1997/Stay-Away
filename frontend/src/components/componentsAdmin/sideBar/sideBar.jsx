@@ -3,7 +3,7 @@ import "./sideBar.scss";
 import elementsAdminBar from "../../../mocks/sideBarElements.json";
 import SideBarItems from "./sideBarItems";
 
-const SideBar = () => {
+const SideBar = (props) => {
   const sideBarElements = elementsAdminBar;
   const [propertySelected, setPropertySelected] = useState("dashboard");
 
@@ -26,7 +26,10 @@ const SideBar = () => {
               name={element.title}
               img={element.img_Url}
               selected={element.title === propertySelected}
-              setPropertySelected={() => setPropertySelected(element.title)}
+              setPropertySelected={() => {
+                setPropertySelected(element.title);
+                props.setSelectedElement(element.title);
+              }}
             />
           );
         })}
@@ -40,7 +43,10 @@ const SideBar = () => {
               name={element.title}
               img={element.img_Url}
               selected={element.title === propertySelected}
-              setPropertySelected={() => setPropertySelected(element.title)}
+              setPropertySelected={() => {
+                setPropertySelected(element.title);
+                props.setSelectedElement(element.title);
+              }}
             />
           );
         })}

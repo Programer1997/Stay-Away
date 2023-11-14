@@ -19,7 +19,8 @@ const router = express.Router();
 // })
 
 
-
+//GET All users|| testing purpose dont need verifyAdmin
+router.get("/testing",getUsers);
 
 //UPDATE:(owner ili admin moze updatovati)
 router.put("/:id",verifyUser, updateUser)
@@ -29,6 +30,9 @@ router.delete("/:id",verifyUser, deleteUser)
 router.get("/", verifyAdmin,getUser)
 //GET SINGLE ONE:
 router.get("/:id",verifyUser, getUsers)
+
+
+
 
 
 

@@ -17,7 +17,7 @@ export default function DashBoardAdmin() {
   const renderSelectedElement = () => {
     switch (selectedElement) {
       case "dashboard":
-        return <DashBoard />;
+        return <DashBoard dataUsers={dataUsers} setDataUsers={setDataUsers} />;
       case "order":
         return <Orders />;
       case "settings":
@@ -36,7 +36,7 @@ export default function DashBoardAdmin() {
       <SideBar setSelectedElement={setSelectedElement} />
       <div className="panel">
         <Header />
-        {renderSelectedElement()}
+        <div className="elementsEachComponent">{renderSelectedElement()}</div>
         {console.log(dataUsers)}
       </div>
     </div>

@@ -16,7 +16,7 @@ const Customer = (props) => {
 
   return (
     <>
-      <div className="cardUsersContainer">
+      <div className="cardsUsersContainer">
         {props.dataUsers.map((element, index, array) => {
           return (
             <CardUsers

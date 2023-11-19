@@ -12,11 +12,11 @@ const Customer = (props) => {
       .catch((error) => {
         console.error("it has occurred an error", error);
       });
-  }, []);
+  }, [props.setDataUsers]);
 
   return (
     <>
-      <div className="cardUsersContainer">
+      <div className="cardsUsersContainer">
         {props.dataUsers.map((element, index, array) => {
           return (
             <CardUsers

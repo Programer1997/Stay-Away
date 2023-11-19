@@ -6,20 +6,23 @@ import "./panel.scss";
 
 const Property = ({ dataUsers }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage] = useState(5);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [elementsPerPage] = useState(5);
+  const [searchFilter, setSearchFilter] = useState("");
 
-  const indexOfLastUser = currentPage * usersPerPage;
-  const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsers = dataUsers.slice(indexOfFirstUser, indexOfLastUser);
-  const currentUsersDemo = dataUsers.slice(0, 5);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const filteredUsers = currentUsers.filter((user) =>
-    user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
+  //filter the data by seacrh but All the data no just the data showed up in that moment
+  const filteredData = dataUsers.filter((user) =>
+    user.firstName.toLowerCase().includes(searchFilter.toLowerCase())
   );
+  const initialValue = (currentPage - 1) * elementsPerPage;
+  const lastValue = initialValue + elementsPerPage;
+  const visibleData = filteredData.slice(initialValue, lastValue); //this give to me part of my array with this values (index from start(0,1,2..stc),until index (5,6,7..etc))
 
+  const nextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+  const prevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
   const handleEdit = (userId) => {
     console.log(`Edit user with ID ${userId}`);
   };
@@ -30,7 +33,10 @@ const Property = ({ dataUsers }) => {
 
   return (
     <div className="propertyTableContainer">
-      <HeaderTable />
+      <HeaderTable
+        searchFilter={searchFilter}
+        setSearchFilter={setSearchFilter}
+      />
       <table>
         <thead>
           <tr>
@@ -42,7 +48,7 @@ const Property = ({ dataUsers }) => {
         </thead>
 
         <tbody>
-          {currentUsersDemo.map((user, index) => (
+          {visibleData.map((user, index) => (
             <TableList
               key={index}
               firstName={user.firstName}
@@ -54,7 +60,11 @@ const Property = ({ dataUsers }) => {
           ))}
         </tbody>
       </table>
-      <FooterTable totalElements={dataUsers.length} />
+      <FooterTable
+        totalElements={dataUsers.length}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
     </div>
   );
 };

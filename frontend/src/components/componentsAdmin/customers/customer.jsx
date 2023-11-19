@@ -12,7 +12,7 @@ const Customer = (props) => {
       .catch((error) => {
         console.error("it has occurred an error", error);
       });
-  }, []);
+  }, [props.setDataUsers]);
 
   return (
     <>

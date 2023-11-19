@@ -23,7 +23,7 @@ export default function DashBoardAdmin() {
       case "settings":
         return <Settings />;
       case "property":
-        return <Property />;
+        return <Property dataUsers={dataUsers} />;
       case "customer":
         return <Customer dataUsers={dataUsers} setDataUsers={setDataUsers} />;
       default:

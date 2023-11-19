@@ -8,7 +8,7 @@ const SideBar = (props) => {
   const [propertySelected, setPropertySelected] = useState("dashboard");
 
   return (
-    <div className="container">
+    <div className="containerSideBar">
       <div className="logoDashBoard">
         <img
           className="img"

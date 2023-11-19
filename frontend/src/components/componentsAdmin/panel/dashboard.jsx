@@ -146,7 +146,12 @@ const DashBoard = (props) => {
 
   return (
     <>
-      <div className="itemsDashboard"></div>
+      <div className="itemsDashboard">
+        <div className="itemDash"></div>
+        <div className="itemDash"></div>
+        <div className="itemDash"></div>
+        <div className="itemDash"></div>
+      </div>
       <div className="chartsDashboard">
         <NivoPie data={data1} />
         <NivoBar data={data2} />

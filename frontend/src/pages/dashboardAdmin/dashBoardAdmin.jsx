@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Axios from "axios";
 import "./dashBoardAdmin.scss";
 
 //import dashboard Sections
@@ -13,6 +14,7 @@ import SideBar from "../../components/componentsAdmin/sideBar/sideBar.jsx";
 export default function DashBoardAdmin() {
   const [selectedElement, setSelectedElement] = useState("dashboard");
   const [dataUsers, setDataUsers] = useState([]);
+  const [deleteData, setDeleteData] = useState({});
 
   const renderSelectedElement = () => {
     switch (selectedElement) {
@@ -23,7 +25,13 @@ export default function DashBoardAdmin() {
       case "settings":
         return <Settings />;
       case "property":
-        return <Property dataUsers={dataUsers} />;
+        return (
+          <Property
+            dataUsers={dataUsers}
+            setDeleteData={setDeleteData}
+            deleteData={deleteData}
+          />
+        );
       case "customer":
         return <Customer dataUsers={dataUsers} setDataUsers={setDataUsers} />;
       default:

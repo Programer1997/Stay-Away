@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import TableList from "./listElements/listElements";
 import HeaderTable from "./listElements/headerTable";
 import FooterTable from "./listElements/footerTable";
+import Axios from "axios";
 import "./panel.scss";
 
-const Property = ({ dataUsers }) => {
+const Property = ({ dataUsers, setDeleteData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage] = useState(5);
   const [searchFilter, setSearchFilter] = useState("");
@@ -23,12 +24,33 @@ const Property = ({ dataUsers }) => {
   const prevPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
-  const handleEdit = (userId) => {
-    console.log(`Edit user with ID ${userId}`);
+
+  const handleEdit = (dataUpdated) => {
+    Axios.put(`/users/testing/${dataUpdated._id}`, {
+      firstName: dataUpdated.firstName,
+      lastName: dataUpdated.lastName,
+      email: dataUpdated.email,
+    })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log("You got an error editing data (handleEdit): ", err);
+      });
   };
 
   const handleDelete = (userId) => {
-    console.log(`Delete user with ID ${userId}`);
+    Axios.delete(`/users/testing/${userId}`)
+      .then((response) => {
+        console.log(response.data);
+        setDeleteData((prevDeleteData) => ({ ...prevDeleteData, userId }));
+      })
+      .catch((err) => {
+        console.error(
+          "Something is wring with the server to delete with error : ",
+          err
+        );
+      });
   };
 
   return (
@@ -40,10 +62,11 @@ const Property = ({ dataUsers }) => {
       <table>
         <thead>
           <tr>
+            <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>email</th>
-            <th>edition</th>
+            <th>Email</th>
+            <th>Edition</th>
           </tr>
         </thead>
 
@@ -51,11 +74,18 @@ const Property = ({ dataUsers }) => {
           {visibleData.map((user, index) => (
             <TableList
               key={index}
+              idValue={user._id}
               firstName={user.firstName}
               lastName={user.lastName}
               email={user.email}
               username={user.username}
               className={index % 2 === 0 ? "evenRow" : ""}
+              handleEdit={(dataUpdated) => {
+                handleEdit(dataUpdated);
+              }}
+              handleDelete={() => {
+                handleDelete(user._id);
+              }}
             />
           ))}
         </tbody>

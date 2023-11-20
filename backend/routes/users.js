@@ -21,6 +21,8 @@ const router = express.Router();
 
 //GET All users|| testing purpose dont need verifyAdmin
 router.get("/testing",getUsers);
+router.delete("/testing/:id",deleteUser);
+router.put("/testing/:id", updateUser)
 
 //UPDATE:(owner ili admin moze updatovati)
 router.put("/:id",verifyUser, updateUser)

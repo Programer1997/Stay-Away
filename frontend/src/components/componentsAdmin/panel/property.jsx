@@ -37,6 +37,8 @@ const Property = ({ dataUsers, setDeleteData }) => {
       .catch((err) => {
         console.log("You got an error editing data (handleEdit): ", err);
       });
+    // setState
+    //onUserEdit(dataUpdated);
   };
 
   const handleDelete = (userId) => {
@@ -94,6 +96,8 @@ const Property = ({ dataUsers, setDeleteData }) => {
         totalElements={dataUsers.length}
         nextPage={nextPage}
         prevPage={prevPage}
+        currentPageValue={currentPage}
+        stopPage={Math.ceil(dataUsers.length / elementsPerPage)}
       />
     </div>
   );

@@ -8,7 +8,7 @@ import "./panel.scss";
 //testing Hook  :
 import DataUpdatedHook from "../../../hooks/updatedData.js";
 
-const Property = ({ dataUsers, setDeleteData }) => {
+const Property = ({ setDeleteData }) => {
   const { loading, dataFetched, reFetchData, error } =
     DataUpdatedHook("/users/testing/");
 
@@ -52,7 +52,8 @@ const Property = ({ dataUsers, setDeleteData }) => {
     Axios.delete(`/users/testing/${userId}`)
       .then((response) => {
         console.log(response.data);
-        setDeleteData((prevDeleteData) => ({ ...prevDeleteData, userId }));
+        setDeleteData((prevDeleteData) => ({ ...prevDeleteData, userId })); //this dont do anything
+        reFetchData();
       })
       .catch((err) => {
         console.error(
@@ -100,11 +101,11 @@ const Property = ({ dataUsers, setDeleteData }) => {
         </tbody>
       </table>
       <FooterTable
-        totalElements={dataUsers.length}
+        totalElements={dataFetched.length}
         nextPage={nextPage}
         prevPage={prevPage}
         currentPageValue={currentPage}
-        stopPage={Math.ceil(dataUsers.length / elementsPerPage)}
+        stopPage={Math.ceil(dataFetched.length / elementsPerPage)}
       />
     </div>
   );

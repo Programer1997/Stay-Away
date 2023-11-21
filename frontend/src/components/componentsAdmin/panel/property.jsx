@@ -5,13 +5,19 @@ import FooterTable from "./listElements/footerTable";
 import Axios from "axios";
 import "./panel.scss";
 
+//testing Hook  :
+import DataUpdatedHook from "../../../hooks/updatedData.js";
+
 const Property = ({ dataUsers, setDeleteData }) => {
+  const { loading, dataFetched, reFetchData, error } =
+    DataUpdatedHook("/users/testing/");
+
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage] = useState(5);
   const [searchFilter, setSearchFilter] = useState("");
 
   //filter the data by seacrh but All the data no just the data showed up in that moment
-  const filteredData = dataUsers.filter((user) =>
+  const filteredData = dataFetched.filter((user) =>
     user.firstName.toLowerCase().includes(searchFilter.toLowerCase())
   );
   const initialValue = (currentPage - 1) * elementsPerPage;
@@ -26,19 +32,20 @@ const Property = ({ dataUsers, setDeleteData }) => {
   };
 
   const handleEdit = (dataUpdated) => {
-    Axios.put(`/users/testing/${dataUpdated._id}`, {
+    const url = `/users/testing/${dataUpdated._id}`;
+
+    Axios.put(url, {
       firstName: dataUpdated.firstName,
       lastName: dataUpdated.lastName,
       email: dataUpdated.email,
     })
       .then((response) => {
         console.log(response.data);
+        reFetchData();
       })
       .catch((err) => {
         console.log("You got an error editing data (handleEdit): ", err);
       });
-    // setState
-    //onUserEdit(dataUpdated);
   };
 
   const handleDelete = (userId) => {

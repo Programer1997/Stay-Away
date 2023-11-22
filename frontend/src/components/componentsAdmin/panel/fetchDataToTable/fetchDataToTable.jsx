@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import TableList from "./listElements/listElements";
-import HeaderTable from "./listElements/headerTable";
-import FooterTable from "./listElements/footerTable";
+import TableList from "../listElements/listElements.jsx";
+import HeaderTable from "../listElements/headerTable.jsx";
+import FooterTable from "../listElements/footerTable.jsx";
 import Axios from "axios";
-import "./panel.scss";
+import "./fetchDataToTable.scss";
 
 //testing Hook  :
-import DataUpdatedHook from "../../../hooks/updatedData.js";
+import DataUpdatedHook from "../../../../hooks/updatedData.js";
 
-const Property = () => {
-  const { loading, dataFetched, reFetchData, error } =
-    DataUpdatedHook("/users/testing/");
+const TableData = (props) => {
+  const { loading, dataFetched, reFetchData, error } = DataUpdatedHook(
+    props.urlHook
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage] = useState(5);
@@ -32,9 +33,9 @@ const Property = () => {
   };
 
   const handleEdit = (dataUpdated) => {
-    const url = `/users/testing/${dataUpdated._id}`;
+    const urlEdition = `${props.urlHook}${dataUpdated._id}`;
 
-    Axios.put(url, {
+    Axios.put(urlEdition, {
       firstName: dataUpdated.firstName,
       lastName: dataUpdated.lastName,
       email: dataUpdated.email,
@@ -49,7 +50,7 @@ const Property = () => {
   };
 
   const handleDelete = (userId) => {
-    Axios.delete(`/users/testing/${userId}`)
+    Axios.delete(`${props.urlHook}${userId}`)
       .then((response) => {
         console.log(response.data);
         reFetchData();
@@ -71,11 +72,11 @@ const Property = () => {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Edition</th>
+            <th>{props.nameColumns.id}</th>
+            <th>{props.nameColumns.firstName}</th>
+            <th>{props.nameColumns.lastName}</th>
+            <th>{props.nameColumns.email}</th>
+            <th>{props.nameColumns.edition}</th>
           </tr>
         </thead>
 
@@ -110,4 +111,4 @@ const Property = () => {
   );
 };
 
-export default Property;
+export default TableData;

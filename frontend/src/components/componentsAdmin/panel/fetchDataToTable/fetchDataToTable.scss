@@ -1,0 +1,133 @@
+.propertyTableContainer { 
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    form { 
+        
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2%;
+        .searchSectionTwo { 
+            width: 60%;
+            display: flex;
+            gap: 3%;
+
+            input { 
+                border-radius: 10px;
+                font-size: 1.1em;
+                border: none;
+                background-color: #f2f2f2;
+                padding: 1%;
+            }
+            .searchButton { 
+                width: 15%;
+                border-radius: 10px;
+                font-size: 1.3em;
+                border: none;
+                background-color: transparent;
+                cursor: pointer;
+
+            }
+            .searchButton:hover {
+                background-color: rgb(156, 196, 255);
+            }
+        }
+            .addButton{ 
+                border: none;
+                border-radius: 10px;
+                padding: 10px;
+                width: 20%;
+                background-color: rgb(25,135,84);
+                color: white;
+                font-size: 1.2em;
+                span {
+                    font-weight: 990;
+                    font-size: 1.2em;
+                }
+
+        }
+        .addButton:hover {
+            opacity: 0.8;
+        }
+
+    }
+    table { 
+        border-collapse: collapse;
+        width: 100%;
+        
+        thead {
+            
+            tr {
+                background-color: #b5b5b5;
+                th  {
+                    text-align: left;
+                    border-bottom: 1px solid #dddddd; 
+                    padding: 8px;
+                }
+            }
+            tr :hover{
+                background-color: #ddd;
+            } 
+        }
+        tbody { 
+            tr {
+                
+                td {
+                    text-align: left;
+                    border-bottom: 1px solid #dddddd; 
+                    padding: 8px;
+                    button { 
+                        border: none;
+                        background-color: transparent;
+                        font-size: 1.3em;
+                        
+                    }
+                    button:hover {
+                        transform: scale(1.2);
+                    }
+                    
+                }
+                &.evenRow{
+                    background-color: #f2f2f2;
+                }
+                &.evenRow:hover{
+                    background-color: #ddd;
+                }
+            }
+            & :hover{
+                background-color: #ddd;
+            }
+        }
+        
+
+    }
+    .pagination {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2%;
+        align-items: center;
+        position: relative;
+            button {
+                border: none;
+                background-color: transparent;
+                font-size: 1.5em;
+            }
+            button:hover {
+                transform: scale(1.2);
+            }
+            p{
+                position: absolute;
+                top: 50%;
+                left: 40%;
+                transform: translate(-50%,-50%);
+            }
+        
+    }
+
+}

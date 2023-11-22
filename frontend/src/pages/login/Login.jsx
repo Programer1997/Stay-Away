@@ -46,9 +46,9 @@ const handleChange = (e) => {
         
       <div className="lContainer">
         <input
-          type="text"
-          placeholder="username"
-          id="username"
+          type="email"
+          placeholder="email"
+          id="email"
           onChange={handleChange}
           className="lInput"
         />

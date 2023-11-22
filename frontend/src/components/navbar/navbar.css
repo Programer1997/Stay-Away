@@ -56,3 +56,18 @@
     color: black;
     transition: 0.6s;
   }
+
+  .create-btn{
+    border: none;
+    width: 230px;
+    align-items: center;
+    text-align: center;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .create-btn:hover{
+    background-color: rgb(102, 27, 172);
+    color: black;
+    transition: 0.6s;
+  }

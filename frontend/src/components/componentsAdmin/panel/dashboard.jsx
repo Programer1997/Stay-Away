@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NivoPie from "./charts/nivo_pie";
 import NivoBar from "./charts/nivo_bar";
+import UserTable from "./charts/tableCustomer";
+import Axios from "axios";
 
-const DashBoard = () => {
+const DashBoard = (props) => {
+  useEffect(() => {
+    Axios.get("/users/testing")
+      .then((response) => {
+        props.setDataUsers(response.data);
+      })
+      .catch((error) => {
+        console.error("it has occurred an error", error);
+      });
+  }, []);
+
   const data1 = [
     {
       id: "Active",
@@ -134,9 +146,19 @@ const DashBoard = () => {
 
   return (
     <>
-      <h1>Dash Board section</h1>
-      <NivoPie data={data1} />
-      <NivoBar data={data2} />
+      <div className="itemsDashboard">
+        <div className="itemDash"></div>
+        <div className="itemDash"></div>
+        <div className="itemDash"></div>
+        <div className="itemDash"></div>
+      </div>
+      <div className="chartsDashboard">
+        <NivoPie data={data1} />
+        <NivoBar data={data2} />
+      </div>
+      <div className="tableDashboard">
+        <UserTable dataUsers={props.dataUsers} />
+      </div>
     </>
   );
 };

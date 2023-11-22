@@ -1,18 +1,24 @@
 import React from "react";
 import DataTable from "../panel/fetchDataToTable/fetchDataToTable.jsx";
+import { useCustomerContext } from "../../../context/customer-context.jsx";
 
-const Customer = (props) => {
-  const urlHook = "/users/testing/";
+const Customer = () => {
+  const { customers, updateCustomer } = useCustomerContext();
+
   const namesOfColumns = {
     id: "ID",
     firstName: "First Name",
     lastName: "Last Name",
     email: "Email",
-    edition: "Edition",
+    edition: "Edition"
   };
   return (
     <>
-      <DataTable urlHook={urlHook} nameColumns={namesOfColumns} />
+      <DataTable
+        state={customers}
+        onUpdate={updateCustomer}
+        nameColumns={namesOfColumns}
+      />
     </>
   );
 };

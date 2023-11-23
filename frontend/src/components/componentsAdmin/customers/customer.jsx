@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import DataTable from "../panel/fetchDataToTable/fetchDataToTable.jsx";
+import { useCustomerContext } from "../../../context/customer-context.jsx";
 
-const Customer = (props) => {
-  const urlHook = "/users/testing/";
+const Customer = () => {
+  const { customer, updateCustomer, deleteCustomer } = useCustomerContext();
+  console.log(customer);
   const namesOfColumns = {
     id: "ID",
     firstName: "First Name",
@@ -12,7 +14,12 @@ const Customer = (props) => {
   };
   return (
     <>
-      <DataTable urlHook={urlHook} nameColumns={namesOfColumns} />
+      <DataTable
+        state={customer}
+        onUpdate={updateCustomer}
+        nameColumns={namesOfColumns}
+        onDelete={deleteCustomer}
+      />
     </>
   );
 };

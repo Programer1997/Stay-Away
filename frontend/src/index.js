@@ -5,6 +5,7 @@ import App from './App';
 import { SearchContextProvider } from './context/SearchContext';
 import { AuthContextProvider } from "./context/authContext";
 import 'bootstrap';
+import { CustomerContextProvider } from "./context/customer-context";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +13,9 @@ root.render(
   <React.StrictMode>
     <AuthContextProvider>
     <SearchContextProvider>
-      <App />
+      <CustomerContextProvider>
+        <App />
+      </CustomerContextProvider>
     </SearchContextProvider>
     </AuthContextProvider>
   </React.StrictMode>

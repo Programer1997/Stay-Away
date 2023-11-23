@@ -7,23 +7,16 @@ const INITIAL_STATE = {
   deleteCustomer: () => {},
 };
 
-export const CustomerContext = createContext(INITIAL_STATE); //step 1
+const CustomerContext = createContext(INITIAL_STATE);
 
 export const CustomerContextProvider = ({ children }) => {
   const [customers, setCustomers] = useState([]);
 
-  const fetchDataCustomers = async () => {
-    try {
-      const response = await axios.get("/users/testing");
-      setCustomers(response.data);
-      console.log(response.data, "esta data es from Hook");
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
-    fetchDataCustomers();
+    axios
+      .get("/users/testing")
+      .then((res) => setCustomers(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   const updateCustomer = (user) => {

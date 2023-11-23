@@ -1,8 +1,10 @@
 import React from "react";
 import DataTable from "./fetchDataToTable/fetchDataToTable.jsx";
+import { useCustomerContext } from "../../../context/customer-context.jsx";
 
 export default function Orders() {
-  const urlHook = "/users/testing/";
+  const { customers, updateCustomer } = useCustomerContext();
+
   const namesOfColumns = {
     id: "ID",
     firstName: "First Name",
@@ -12,7 +14,11 @@ export default function Orders() {
   };
   return (
     <>
-      <DataTable urlHook={urlHook} nameColumns={namesOfColumns} />
+      <DataTable
+        state={customers}
+        onUpdate={updateCustomer}
+        nameColumns={namesOfColumns}
+      />
     </>
   );
 }

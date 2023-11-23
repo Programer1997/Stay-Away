@@ -6,17 +6,15 @@ import "./fetchDataToTable.scss";
 
 //testing Hook  :
 
-const TableData = ({ nameColumns, state, onUpdate, onDelete }) => {
+const TableData = ({ nameColumns, state, onUpdate }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage] = useState(5);
   const [searchFilter, setSearchFilter] = useState("");
 
   //filter the data by seacrh but All the data no just the data showed up in that moment
-  const filteredCustomers = state
-    ? state.filter((user) =>
-        user.firstName.toLowerCase().includes(searchFilter.toLowerCase())
-      )
-    : [];
+  const filteredCustomers = state.filter((user) =>
+    user.firstName.toLowerCase().includes(searchFilter.toLowerCase())
+  );
   const initialValue = (currentPage - 1) * elementsPerPage;
   const lastValue = initialValue + elementsPerPage;
   const visibleData = filteredCustomers.slice(initialValue, lastValue); //this give to me part of my array with this values (index from start(0,1,2..stc),until index (5,6,7..etc))

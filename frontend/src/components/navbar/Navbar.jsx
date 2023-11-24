@@ -3,11 +3,10 @@ import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 
-
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
-  
 
   // const onRent = useCallback(()=>{
   //   if(!user) {
@@ -16,10 +15,8 @@ const Navbar = () => {
   //   //suprotno
   //   rentModal.onOpen();
 
-
   // }, [user, navigate])
 
-  
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("user");
@@ -36,8 +33,7 @@ const Navbar = () => {
         {/* //if user is logged in */}
         {user ? (
           <>
-
-            <span className="username">{user.username}</span>
+            <span className="userName">Welcome Back, {user.firstName} </span>
             <button className="logoutBtn" onClick={handleLogout}>
               Log out
             </button>

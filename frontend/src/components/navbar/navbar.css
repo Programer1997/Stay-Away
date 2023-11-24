@@ -75,3 +75,6 @@
   .userName { 
     text-transform: capitalize;
   }
+  .adminAccess{
+    cursor: pointer;
+  }

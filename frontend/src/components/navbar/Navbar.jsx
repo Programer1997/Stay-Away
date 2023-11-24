@@ -33,7 +33,17 @@ const Navbar = () => {
         {/* //if user is logged in */}
         {user ? (
           <>
-            <span className="userName">Welcome Back, {user.firstName} </span>
+            <span className="userName">
+              Welcome Back, {user.details.firstName}{" "}
+            </span>
+            {user.isAdmin === true ? (
+              <p
+                className="adminAccess"
+                onClick={() => navigate("/dashBoardAdmin")}
+              >
+                Admin Panel
+              </p>
+            ) : null}
             <button className="logoutBtn" onClick={handleLogout}>
               Log out
             </button>

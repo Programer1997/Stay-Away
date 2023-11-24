@@ -3,7 +3,7 @@ import "./dashBoardAdmin.scss";
 
 //import dashboard Sections
 import DashBoard from "../../components/componentsAdmin/panel/dashboard.jsx";
-import Orders from "../../components/componentsAdmin/panel/orders.jsx";
+import Bookings from "../../components/componentsAdmin/panel/bookings.jsx";
 import Header from "../../components/componentsAdmin/panel/header.jsx";
 import Property from "../../components/componentsAdmin/panel/property.jsx";
 import Settings from "../../components/componentsAdmin/panel/settigs.jsx";
@@ -18,12 +18,12 @@ export default function DashBoardAdmin() {
     switch (selectedElement) {
       case "dashboard":
         return <DashBoard dataUsers={dataUsers} setDataUsers={setDataUsers} />;
-      case "order":
-        return <Orders />;
+      case "bookings":
+        return <Bookings />;
       case "settings":
         return <Settings />;
       case "property":
-        return <Property dataUsers={dataUsers} />;
+        return <Property />;
       case "customer":
         return <Customer />;
       default:

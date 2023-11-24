@@ -40,6 +40,8 @@
     transition: 0.5s;
     position: relative;
     font-weight: 500;
+    color: blueviolet;
+
     
   }
   .logoutBtn:hover{

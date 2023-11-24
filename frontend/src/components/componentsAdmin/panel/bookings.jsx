@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from "./fetchDataToTable/fetchDataToTable.jsx";
 
-export default function Property() {
+export default function Bookings() {
   const namesOfColumns = {
     c1: "ID",
     c2: "First Name",

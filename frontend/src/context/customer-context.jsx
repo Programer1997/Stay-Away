@@ -41,8 +41,24 @@ export const CustomerContextProvider = ({ children }) => {
       });
   };
 
-  const deleteCustomer = (user) => {
+  const deleteCustomer = (user_id) => {
     // delete the user
+    axios
+      .delete(`/users/testing/${user_id}`)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    setCustomers((prev) => {
+      const users = [...prev];
+      const userIndex = users.findIndex((state) => state._id === user_id);
+      users.splice(userIndex, 1);
+
+      return users;
+    });
   };
 
   const value = { customers, updateCustomer, deleteCustomer };

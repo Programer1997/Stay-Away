@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./panel.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/authContext";
 
 function Header() {
   //temporal variables :
-  const name = "Abraham Velazquez";
+  const { user } = useContext(AuthContext);
+  const name = user.details.firstName;
 
   const navigate = useNavigate();
 
@@ -42,7 +44,7 @@ function Header() {
             src={process.env.PUBLIC_URL + "/images/client.png"}
             alt="client charging..."
           />
-          <p className="adminAccess" onClick={() => navigate("/")}>
+          <p className="adminAccess homeAccess" onClick={() => navigate("/")}>
             Home<span>&#10132;</span>
           </p>
         </div>

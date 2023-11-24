@@ -1,9 +1,10 @@
 //CSS just for Header Section
 
 $dashboardHeaderSection :rgb(248,249,250);
+$colorButtonHome :rgb(170,60,250);
 
 .headerSection{
-    
+    text-transform: capitalize;
     font-weight: 500;
     width: 100%;
     display: flex;
@@ -20,6 +21,7 @@ $dashboardHeaderSection :rgb(248,249,250);
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         .welcomeUser { 
             width: 35%;
             display: flex;
@@ -59,10 +61,12 @@ $dashboardHeaderSection :rgb(248,249,250);
         width: 35%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .icons { 
             width: 40%;
             display: flex;
             gap: 5px;
+            align-items: center;
             img { 
                 cursor: pointer;
                 padding: 2%;
@@ -74,12 +78,22 @@ $dashboardHeaderSection :rgb(248,249,250);
             cursor: pointer;
             width: 40%;
             display: flex;
+            align-items: center;
             
             img { 
                 background-color: rgb(248,249,250);
                 border-radius: 50%;
                 padding: 1%;
             }
+            .homeAccess { 
+                background-color: $colorButtonHome;
+                color: white;
+                padding: 8px;
+            }
+            .homeAccess:hover {
+                background-color: darken($colorButtonHome, $amount: 20%);
+            }
+            
         }
 
     }
@@ -89,7 +103,7 @@ $dashboardHeaderSection :rgb(248,249,250);
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px 4px rgba(0, 0, 0, 0.1);
     form { 
         
         width: 100%;

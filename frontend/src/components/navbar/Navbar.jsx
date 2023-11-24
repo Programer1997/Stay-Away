@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
-  console.log(user);
+  //console.log(user);
   const navigate = useNavigate();
 
   // const onRent = useCallback(()=>{

@@ -73,6 +73,7 @@ $dashboardHeaderSection :rgb(248,249,250);
         .userLogged { 
             cursor: pointer;
             width: 40%;
+            display: flex;
             
             img { 
                 background-color: rgb(248,249,250);

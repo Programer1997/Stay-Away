@@ -1,9 +1,12 @@
 import React from "react";
 import "./panel.scss";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Header() {
   //temporal variables :
   const name = "Abraham Velazquez";
+
+  const navigate = useNavigate();
 
   return (
     <div className="headerSection">
@@ -39,6 +42,9 @@ function Header() {
             src={process.env.PUBLIC_URL + "/images/client.png"}
             alt="client charging..."
           />
+          <p className="adminAccess" onClick={() => navigate("/")}>
+            Home<span>&#10132;</span>
+          </p>
         </div>
       </div>
     </div>

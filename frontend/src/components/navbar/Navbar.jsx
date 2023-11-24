@@ -36,17 +36,20 @@ const Navbar = () => {
             <span className="userName">
               Welcome Back, {user.details.firstName}{" "}
             </span>
-            {user.isAdmin === true ? (
-              <p
-                className="adminAccess"
-                onClick={() => navigate("/dashBoardAdmin")}
-              >
-                Admin Panel
-              </p>
-            ) : null}
-            <button className="logoutBtn" onClick={handleLogout}>
-              Log out
-            </button>
+            <div className="btn-container">
+              {user.isAdmin === true ? (
+                <p
+                  className="adminAccess"
+                  onClick={() => navigate("/dashBoardAdmin")}
+                >
+                  Admin Panel
+                  <span>&#10132;</span>
+                </p>
+              ) : null}
+              <button className="logoutBtn" onClick={handleLogout}>
+                Log out
+              </button>
+            </div>
           </>
         ) : (
           <div className="navItems">

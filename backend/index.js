@@ -5,9 +5,16 @@ import authRoute from './routes/auth.js'
 import usersRoute from './routes/users.js'
 import hotelsRoute from './routes/hotels.js'
 import roomsRoute from './routes/rooms.js'
+import reviewsRoute from './routes/review.js';
 import cookieParser from 'cookie-parser'
+import cors from 'cors';
 
 const app = express()
+app.use(cors({
+    origin: 'http://localhost:3000', // Replace with your frontend domain
+    credentials: true
+}));
+
 //Enviroment variables / variables de entorno / para proteger datas sencibles que no quieres que otros vean
 dotenv.config()
 const PORT = process.env.PORT || 8000;
@@ -40,6 +47,7 @@ app.use('/api/auth', authRoute)
 app.use('/api/hotels', hotelsRoute)
 app.use('/api/rooms', roomsRoute)
 app.use('/api/users', usersRoute)
+app.use('/api/reviews', reviewsRoute)
 
 //error handling middleware - 
 app.use((err, req, res, next) => {

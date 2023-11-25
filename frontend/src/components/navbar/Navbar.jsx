@@ -1,4 +1,4 @@
-import { useCallback, useContext } from "react";
+import {  useContext } from "react";
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
@@ -36,11 +36,14 @@ const Navbar = () => {
         {/* //if user is logged in */}
         {user ? (
           <>
-
-            <span className="username">{user.username}</span>
+          <div className="nav-button">
+            <Link  to={`/profile/${user._id}`}>
+            <button className="logoutBtn">Hey! {user.username ? user.username : user.firstName} 😊</button>
+            </Link>
             <button className="logoutBtn" onClick={handleLogout}>
               Log out
             </button>
+            </div>
           </>
         ) : (
           <div className="navItems">

@@ -6,6 +6,7 @@ import { SearchContextProvider } from "./context/SearchContext";
 import { AuthContextProvider } from "./context/authContext";
 import "bootstrap";
 import { CustomerContextProvider } from "./context/customer-context";
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

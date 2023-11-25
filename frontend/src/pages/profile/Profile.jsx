@@ -1,100 +1,102 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import "./profile.css";
-import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Link } from "react-router-dom";
-export default function Profile() {
-  const navigate = useNavigate();
+import { useParams, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-  const initialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  };
-  const [formData, setFormData] = useState(initialValues);
+export default function Profile() {
+  const [userData, setUserData] = useState(null);
+  const { id } = useParams();
+
+  const [currentUser, setCurrentUser] = useState({
+    fname: "",
+    lname: "",
+    Email: ""
+  });
+
+  useEffect(() => {
+    Axios.get(`http://localhost:8000/api/users/${id}`, { withCredentials: true })
+      .then((response) => {
+        setUserData(response.data);
+        setCurrentUser({
+          fname: response.data.firstName,
+          lname: response.data.lastName,
+          Email: response.data.email
+        });
+      })
+      .catch((err) => {
+        console.log(`Error in request: ${err}`);
+      });
+  }, [id]);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    postDataServer(formData);
-    console.log("form data from Frontend (register component)  : ");
-    console.log(formData);
-    clean();
-    navigate("/login");
+    postDataServer(currentUser);
   };
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-  const clean = () => {
-    setFormData(initialValues);
-  };
-  const postDataServer = (formData) => {
-    Axios.post("/auth/register", {
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      password: formData.password,
-    })
+
+  const postDataServer = (currentUser) => {
+    Axios.put(`http://localhost:8000/api/users/${id}`, {
+      firstName: currentUser.fname,
+      lastName: currentUser.lname,
+    }, { withCredentials: true })
       .then((response) => {
-        console.log(response.data);
+        setUserData(response.data);
+        setCurrentUser({
+          fname: response.data.firstName,
+          lname: response.data.lastName,
+          Email: response.data.email
+        });
+        toast.success('User information edited successfully!', {
+          autoClose: 2000,
+        });
       })
       .catch((err) => {
+        toast.error('User information editing failed!', {
+          autoClose: 2000,
+        });
         console.log(`we have an error in this request, ${err}`);
       });
   };
 
+
+
+  const changingField = (e) => {
+    setCurrentUser({
+      ...currentUser,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  if (!userData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <div className="profile-navbar">
-
-      <div className="logo">
-        
-        <Link to="/">
-
-        Stay Away
-
-        </Link>
-
+        <div className="logo">
+          <Link to="/">Stay Away</Link>
         </div>
-<div className="profile-links">
-    
-<Link to="/profile">
-    Profile
-    </Link>
-    <Link to="/profile">
-    Profile
-    </Link>
-    <Link to="/profile">
-    Profile
-    </Link>
-
-    </div>
-
-
+        <div className="profile-links">
+          <Link to="#">logout</Link>
+        </div>
       </div>
-
-      
 
       <div className="formRegister">
         <div className="text">
           <h1>User Profile</h1>
         </div>
-        <form action="" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="fullName">
             <div className="form-floating mb-3" id="nameFL">
               <input
                 className="form-control"
                 type="text"
-                name="firstName"
-                value={"John"}
-                onChange={handleChange}
-                placeholder="name@example.com"
+                name="fname"
+                value={currentUser.fname || ''}
+                placeholder="Francisco"
+                onChange={changingField}
               />
               <label>First name</label>
             </div>
@@ -103,10 +105,10 @@ export default function Profile() {
               <input
                 className="form-control"
                 type="text"
-                name="lastName"
-                value={"Doe"}
-                onChange={handleChange}
-                placeholder="name@example.com"
+                name="lname"
+                value={currentUser.lname || ''}
+                placeholder="Murcia"
+                onChange={changingField}
               />
               <label>Last name</label>
             </div>
@@ -115,25 +117,23 @@ export default function Profile() {
           <div className="form-floating mb-3" id="elementForm">
             <input
               type="email"
-              name="email"
-              value={"JopnDoe@gmail.com"}
-              onChange={handleChange}
+              name="Email"
+              value={currentUser.Email || ''}
+              readOnly
               className="form-control"
               placeholder="name@example.com"
             />
             <label>Email address</label>
           </div>
 
-
           <div className="buttonsRegister">
-            <button className="btn btn-primary" id="btn-ChangeMethod">
+            <button type="submit" className="btn btn-primary" id="btn-ChangeMethod">
               Save
             </button>
-            
-                            <Link to="/changepassword" className="btn btn-danger" id="btn-CreateAccount">
+
+            <Link to={`/changepassword/${id}`} className="btn btn-danger" id="btn-CreateAccount">
               Change Password
             </Link>
-           
           </div>
         </form>
       </div>

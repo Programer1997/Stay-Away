@@ -99,10 +99,11 @@ form {
 }
 
 .profile-navbar .logo {
-    width: 90px;
+    width: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 40px;
 }
 
 .profile-links a {

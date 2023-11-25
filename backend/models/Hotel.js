@@ -1,6 +1,6 @@
 //in models all schemas for MongoDB:
 import mongoose from 'mongoose'
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const HotelSchema = new mongoose.Schema({
     name: {

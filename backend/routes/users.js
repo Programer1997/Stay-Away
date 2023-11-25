@@ -29,9 +29,9 @@ router.put("/:id",verifyUser, updateUser)
 //DELETE:
 router.delete("/:id",verifyUser, deleteUser)
 //GET ALL:
-router.get("/", verifyAdmin,getUser)
+router.get("/", verifyAdmin,getUsers)
 //GET SINGLE ONE:
-router.get("/:id",verifyUser, getUsers)
+router.get("/:id",verifyUser, getUser)
 
 
 

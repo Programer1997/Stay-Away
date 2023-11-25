@@ -75,10 +75,10 @@ export default function Profile() {
 
   return (
     <>
-      
+
       <ProfileNav />
 
-      <div className="formRegister">
+      <div className="profileRegister">
         <div className="text">
           <h1>User Profile</h1>
         </div>

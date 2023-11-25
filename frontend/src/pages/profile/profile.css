@@ -1,86 +1,55 @@
-
-/*
-.container{ 
-    width: 100% !important;
-    height: 100vh;
-    margin: 0 !important;
-    padding: 0;
-    background-image: linear-gradient(to top right, #000, #fff);
-    background-image: linear-gradient(
-    to top right,
-    #000 0%,     Esquina inferior izquierda, color más oscuro 
-    #333 50%,    Transición en el medio 
-    #000 100%     
-  );
-}*/
-
-
-
-
-.formRegister {
-    margin-top: 150px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 35px;
+.profileRegister {
+  margin-top: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 35px;
+  align-items: center;
 }
 
 .text {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around; 
-    padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
 }
 
-p{
-
-}
-h1{
-  
-
-}
-#point { 
-  
+.profileRegister h1 {
+  text-align: center;
 }
 
-form { 
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    
+form {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
-.fullName { 
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.fullName {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-#nameFL{
-    width: 48%;
+#nameFL {
+  width: 48%;
 }
-#elementForm{
-
+#elementForm {
 }
 
-.buttonsRegister { 
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between
+.buttonsRegister {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #btn-ChangeMethod {
-    width: 45%;
+  width: 45%;
 }
 #btn-CreateAccount {
-    width: 45%;
+  width: 45%;
 }
-
-
-
-

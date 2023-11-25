@@ -57,7 +57,7 @@ export default function ChangePassword() {
         <>
             <ProfileNav />
 
-            <div className="formRegister">
+            <div className="profileRegister">
                 <div className="text">
                     <h1>Change Password</h1>
                 </div>
@@ -76,8 +76,8 @@ export default function ChangePassword() {
                     <div className="form-floating mb-3" id="elementForm">
                         <input
                             className="form-control"
-                            type="password" 
-                            name="confirmPassword" 
+                            type="password"
+                            name="confirmPassword"
                             value={formData.confirmPassword}
                             onChange={handleChange}
                         />

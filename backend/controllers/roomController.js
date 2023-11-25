@@ -99,3 +99,44 @@ export const getAllRooms = async (req, res, next) =>  {
 }
 }
 
+
+export const countByCityWithRooms = async (req, res, next) => {
+    try {
+        const result = await Hotel.populate("room")
+        // ([
+        //     {
+        //         $lookup: {
+        //             from: "rooms",
+        //             localField: "rooms", 
+        //             foreignField: "_id",
+        //             as: "roomDetails"
+        //         }
+        //     },
+        //     {
+        //         $unwind: {
+        //             path: "$roomDetails",
+        //             preserveNullAndEmptyArrays: true //jednaki ako nema soba
+        //         }
+        //     },
+        //     {
+        //         $group: {
+        //             _id: "$city",
+        //             totalRooms: { $sum: 1 }
+        //         }
+        //     },
+        //     {
+        //         $project: {
+        //             _id: 0,
+        //             city: "$_id",
+        //             totalRooms: 1
+        //         }
+        //     }
+        // ]);
+
+        res.status(200).json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+
+

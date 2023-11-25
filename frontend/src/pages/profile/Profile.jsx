@@ -3,6 +3,7 @@ import Axios from "axios";
 import "./profile.css";
 import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import ProfileNav from "../../components/profileNav/ProfileNav";
 
 export default function Profile() {
   const [userData, setUserData] = useState(null);
@@ -74,14 +75,8 @@ export default function Profile() {
 
   return (
     <>
-      <div className="profile-navbar">
-        <div className="logo">
-          <Link to="/">Stay Away</Link>
-        </div>
-        <div className="profile-links">
-          <Link to="#">logout</Link>
-        </div>
-      </div>
+      
+      <ProfileNav />
 
       <div className="formRegister">
         <div className="text">

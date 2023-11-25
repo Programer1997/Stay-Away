@@ -63,7 +63,7 @@ const handleChange = (e) => {
           Login
         </button>
         {error && <span>{error.message}</span>}
-        <span className="registerLink">Dont have an account yet? You can <Link>register now!</Link></span>
+        <span className="registerLink">Dont have an account yet? You can <Link to="/register">register now!</Link></span>
       </div>
     </div>
     </div>

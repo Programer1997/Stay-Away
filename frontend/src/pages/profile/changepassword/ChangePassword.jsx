@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import ProfileNav from "../../../components/profileNav/ProfileNav";
 
 export default function ChangePassword() {
     const navigate = useNavigate();
@@ -54,15 +55,7 @@ export default function ChangePassword() {
 
     return (
         <>
-            <div className="profile-navbar">
-                <div className="logo">
-                    <Link to="/">Stay Away</Link>
-                </div>
-                <div className="profile-links">
-                    <Link to="/profile">Profile</Link>
-                    {/* Additional Profile links if needed */}
-                </div>
-            </div>
+            <ProfileNav />
 
             <div className="formRegister">
                 <div className="text">

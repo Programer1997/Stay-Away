@@ -1,0 +1,55 @@
+
+.profile-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: blueviolet;
+    padding: 10px 20px;
+}
+.profile-navbar .logo a {
+    color: blueviolet !important;
+}
+
+.profile-navbar .logo {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    text-decoration: none;
+}
+
+.profile-navbar .logo a{
+    text-decoration: none;
+}
+
+.profile-links a {
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.profile-links .logbtn {
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+}
+
+.profile-links {
+    display: flex;
+    gap: 10px;
+}
+
+.profile-links a:hover {
+    color: blueviolet !important;
+    background: white;
+}
+
+.profile-links .logbtn:hover {
+    color: blueviolet !important;
+    background: white;
+}

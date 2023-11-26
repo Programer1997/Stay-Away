@@ -12,7 +12,7 @@ router.put("/availability/:id", updateRoomAvailability);
 router.delete('/:id/:hotelid',verifyAdmin, deleteRoom); //hotelid
 //GET A SINGLE HOTEL
 router.get('/:id', getSingleRoom);
-router.get("/countByCityWithRooms", countByCityWithRooms)
+
 //GET ALL
 router.get('/', getAllRooms)
 

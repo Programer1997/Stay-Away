@@ -40,7 +40,6 @@
 .hotelCard.show .hotelCardBody {
   display: block;
   animation: fadeIn 0.3s ease-in;
-  
 }
 
 @keyframes fadeIn {
@@ -52,6 +51,30 @@
   }
 }
 
+.message-container {
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.my-message {
+  min-width: 175px;
+  text-align: end;
+  display: inline-block; 
+  padding: 5px 10px; 
+  background-color: #f1f1f1; 
+  border-radius: 10px; 
+  box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
+  -moz-box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
+  margin: 5px 0; 
+}
+
+.message {
+  box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
+  -webkit-box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
+  -moz-box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
+}
+
 .hotelImage {
   width: 100%;
   height: 400px;
@@ -61,11 +84,11 @@
 .hotelCardBody {
   padding: 15px;
   background-color: #f7f7f7;
-  display: none; 
+  display: none;
 }
 
 .hotelTitle {
-  color: #007BFF;
+  color: #007bff;
   margin-bottom: 10px;
 }
 
@@ -82,10 +105,12 @@
   font-weight: bold;
 }
 
-.hotelLocation, .hotelDistance, .hotelRating, .hotelPrice {
+.hotelLocation,
+.hotelDistance,
+.hotelRating,
+.hotelPrice {
   margin-bottom: 10px;
 }
-
 
 .addHotelButtonContainer {
   display: flex;
@@ -96,7 +121,7 @@
 
 .addHotelButton {
   padding: 12px 25px;
-  background-color: #4CAF50; /* Green background */
+  background-color: #4caf50; 
   color: white;
   border: none;
   border-radius: 8px;
@@ -109,14 +134,15 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.addHotelButton:hover, .addHotelButton:focus {
-  background-color: #3e8e41; /* Darker green */
-  transform: translateY(-2px); /* Slight lift */
+.addHotelButton:hover,
+.addHotelButton:focus {
+  background-color: #3e8e41; 
+  transform: translateY(-2px); 
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .addHotelButton:active {
-  background-color: #366c35; /* Even darker green on click */
+  background-color: #366c35; 
   transform: translateY(1px);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }

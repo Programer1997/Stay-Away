@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashBoardAdmin from './pages/dashboardAdmin/dashBoardAdmin.jsx';
 import ChangePassowrd from './pages/profile/changepassword/ChangePassword.jsx';
 import Reviews from './pages/profile/reviews/Reviews.jsx';
+import ChatPage from './pages/chat/chat.jsx';
 
 function App() {
   return (
@@ -19,13 +20,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/hotels' element={<List />} />
-        <Route path='/hotels/:id' element={<Hotel />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/hotels/:id' element={<Hotel />} />
+        <Route exact path='/chat' element={<ChatPage />} />
         <Route exact path='/register' element={<Register />} />
         <Route exact path='/profile/:id' element={<Profile />} />
         <Route exact path='/reviews/:id' element={<Reviews />} />
-        <Route exact path='/changepassword/:id' element={<ChangePassowrd />} />
         <Route exact path='/dashBoardAdmin' element={<DashBoardAdmin />} />
+        <Route exact path='/changepassword/:id' element={<ChangePassowrd />} />
       </Routes>
     </BrowserRouter>
   );

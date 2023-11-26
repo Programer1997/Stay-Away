@@ -37,6 +37,7 @@ const Navbar = () => {
         {user ? (
           <>
             <div className="nav-button">
+              
               <Link to={`/profile/${user._id}`}>
                 <button className="logoutBtn">Hey! {user.username ? user.username : user.firstName + ' ' + user.lastName} 😊</button>
               </Link>

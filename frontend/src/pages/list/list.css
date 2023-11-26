@@ -1,84 +1,122 @@
-.listContainer {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 20px;
-  margin-left: 70px;
-}
-
-.listWrapper {
-  max-width: 1024px;
-  display: flex;
-  gap: 20px;
-}
-
-.listSearch {
-  flex: 1;
-  background-color: #bc23e2;
-  padding: 10px;
-  border-radius: 10px;
-  position: sticky;
-  top: 10px;
-  height: max-content;
-}
-
-.lsTitle{
-  font-size: 20px;
-  color: black;
-  margin-bottom: 10px;
-}
-
-.lsItem{
+.hotelList {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hotelCard {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  width: 800px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.hotelCard:hover {
+  transform: scale(1.05);
+}
+.hotelCardHeader {
+  padding: 15px;
+  background-color: blueviolet;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.hotelCardBody {
+  padding: 15px;
+  display: none;
+  background-color: #f7f7f7;
+}
+
+.hotelCard.show .hotelCardBody {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
   
 }
 
-.lsItem>label{
-  font-size: 12px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.lsItem>input{
-  height: 30px;
-  border: none;
-  padding: 5px;
-}
-.lsItem>span{
-  height: 30px;
-  padding: 5px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+.hotelImage {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 
-.lsOptions{
-  padding: 10px;
+.hotelCardBody {
+  padding: 15px;
+  background-color: #f7f7f7;
+  display: none; 
 }
 
-.lsOptionItem{
-  display: flex;
-  justify-content: space-between;
+.hotelTitle {
+  color: #007BFF;
   margin-bottom: 10px;
-  color: black;
-  font-size: 12px;
 }
 
-.lsOptionInput{
-  width: 50px;
+.hotelDesc {
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 
-.listSearch>button{
-  padding: 10px;
-  background-color: #0071c2;
+.hotelInfo {
+  font-size: 14px;
+}
+
+.infoLabel {
+  font-weight: bold;
+}
+
+.hotelLocation, .hotelDistance, .hotelRating, .hotelPrice {
+  margin-bottom: 10px;
+}
+
+
+.addHotelButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.addHotelButton {
+  padding: 12px 25px;
+  background-color: #4CAF50; /* Green background */
   color: white;
   border: none;
-  width: 100%;
-  font-weight: 500;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.listResult {
-  flex: 3;
+.addHotelButton:hover, .addHotelButton:focus {
+  background-color: #3e8e41; /* Darker green */
+  transform: translateY(-2px); /* Slight lift */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.addHotelButton:active {
+  background-color: #366c35; /* Even darker green on click */
+  transform: translateY(1px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }

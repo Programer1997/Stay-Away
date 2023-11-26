@@ -10,7 +10,7 @@ const SearchItem = ({item}) => {
         className="siImg"
       />
       <div className="siDesc">
-        <h1 className="siTitle">{item.name}</h1>
+        <h1 className="siTitle">{item?.name}</h1>
         <span className="siDistance">{item.distance}m from center</span>
         <span className="siTaxiOp">Free airport taxi in-price calculated</span>
         <span className="siSubtitle">

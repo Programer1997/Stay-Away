@@ -1,4 +1,4 @@
-import {  useContext } from "react";
+import { useContext } from "react";
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/authContext";
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-  
+
 
   // const onRent = useCallback(()=>{
   //   if(!user) {
@@ -19,7 +19,7 @@ const Navbar = () => {
 
   // }, [user, navigate])
 
-  
+
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("user");
@@ -36,13 +36,13 @@ const Navbar = () => {
         {/* //if user is logged in */}
         {user ? (
           <>
-          <div className="nav-button">
-            <Link  to={`/profile/${user._id}`}>
-            <button className="logoutBtn">Hey! {user.username ? user.username : user.firstName} 😊</button>
-            </Link>
-            <button className="logoutBtn" onClick={handleLogout}>
-              Log out
-            </button>
+            <div className="nav-button">
+              <Link to={`/profile/${user._id}`}>
+                <button className="logoutBtn">Hey! {user.username ? user.username : user.firstName + ' ' + user.lastName} 😊</button>
+              </Link>
+              <button className="logoutBtn" onClick={handleLogout}>
+                Log out
+              </button>
             </div>
           </>
         ) : (

@@ -1,9 +1,9 @@
 .chatPage {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  height: 100vh; 
-  padding: 20px; 
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
 }
 
 .chatContainer {
@@ -22,7 +22,7 @@
 .chatSidebar {
   width: 30%;
   background-color: blueviolet;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .chatContact {
@@ -54,7 +54,7 @@
 .chatMessages {
   flex-grow: 1;
   padding: 20px;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .message {
@@ -91,4 +91,49 @@
 
 .chatInputArea button:hover {
   background-color: rgb(154, 96, 209);
+}
+
+/* Responsive Adjustments */
+
+/* Tablet and Smaller Devices (e.g., width <= 768px) */
+@media (max-width: 768px) {
+  .chatContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .chatSidebar {
+    width: 100%;
+    height: 30vh;
+  }
+
+  .chatMain {
+    height: 70vh;
+  }
+
+  .chatInputArea input,
+  .chatInputArea button {
+    font-size: smaller;
+  }
+}
+
+/* Mobile Devices (e.g., width <= 425px) */
+@media (max-width: 425px) {
+  .chatHeader,
+  .chatContact,
+  .chatInputArea button {
+    font-size: smaller;
+  }
+
+  .chatMessages {
+    padding: 10px;
+  }
+
+  .chatInputArea {
+    padding: 5px;
+  }
+
+  .chatInputArea input {
+    margin-right: 5px;
+  }
 }

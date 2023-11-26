@@ -1,3 +1,4 @@
+/* Default Styles for Larger Screens (e.g., larger than 1024px) */
 .hotelList {
   display: flex;
   flex-direction: column;
@@ -15,7 +16,7 @@
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
-  width: 800px;
+  width: 800px; /* Default width for larger screens */
   margin-bottom: 20px;
   margin-top: 40px;
 }
@@ -23,6 +24,7 @@
 .hotelCard:hover {
   transform: scale(1.05);
 }
+
 .hotelCardHeader {
   padding: 15px;
   background-color: blueviolet;
@@ -53,20 +55,20 @@
 
 .message-container {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
 }
 
 .my-message {
   min-width: 175px;
   text-align: end;
-  display: inline-block; 
-  padding: 5px 10px; 
-  background-color: #f1f1f1; 
-  border-radius: 10px; 
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
   box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
   -webkit-box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
   -moz-box-shadow: 7px 9px 5px -3px rgba(0, 0, 0, 0.53);
-  margin: 5px 0; 
+  margin: 5px 0;
 }
 
 .message {
@@ -79,12 +81,6 @@
   width: 100%;
   height: 400px;
   object-fit: cover;
-}
-
-.hotelCardBody {
-  padding: 15px;
-  background-color: #f7f7f7;
-  display: none;
 }
 
 .hotelTitle {
@@ -121,7 +117,7 @@
 
 .addHotelButton {
   padding: 12px 25px;
-  background-color: #4caf50; 
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 8px;
@@ -136,13 +132,48 @@
 
 .addHotelButton:hover,
 .addHotelButton:focus {
-  background-color: #3e8e41; 
-  transform: translateY(-2px); 
+  background-color: #3e8e41;
+  transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .addHotelButton:active {
-  background-color: #366c35; 
+  background-color: #366c35;
   transform: translateY(1px);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries for Responsive Design */
+
+/* Mobile Small: 320px */
+@media (max-width: 320px) {
+  .hotelCard {
+    width: 100%;
+  }
+
+  .hotelImage {
+    height: 200px;
+  }
+}
+
+/* Mobile Medium: 375px */
+@media (max-width: 375px) {
+}
+
+/* Mobile Large: 425px */
+@media (max-width: 425px) {
+}
+
+/* Tablet: 768px */
+@media (max-width: 768px) {
+  .hotelCard {
+    width: 85%;
+  }
+}
+
+/* Laptop: 1024px */
+@media (max-width: 1024px) {
+  .hotelCard {
+    width: 80%;
+  }
 }

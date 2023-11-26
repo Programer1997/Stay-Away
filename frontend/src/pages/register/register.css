@@ -47,3 +47,41 @@ form {
 #btn-CreateAccount {
   width: 45%;
 }
+
+/* Responsive Adjustments */
+
+/* Tablet and Smaller Devices (e.g., width <= 768px) */
+@media (max-width: 768px) {
+  form {
+    width: 60%;
+  }
+
+  .fullName {
+    flex-direction: column;
+  }
+
+  #nameFL {
+    width: 100%;
+  }
+
+  .buttonsRegister {
+    flex-direction: column;
+  }
+
+  #btn-ChangeMethod,
+  #btn-CreateAccount {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Mobile Devices (e.g., width <= 425px) */
+@media (max-width: 425px) {
+  form {
+    width: 80%;
+  }
+
+  .formRegister {
+    margin-top: 50px;
+  }
+}

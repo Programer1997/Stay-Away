@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from "./fetchDataToTable/fetchDataToTable.jsx";
 
-export default function Bookings() {
+export default function Bookings({ setAddModal, addModal }) {
   const namesOfColumns = {
     c1: "ID",
     c2: "First Name",
@@ -11,7 +11,11 @@ export default function Bookings() {
   };
   return (
     <>
-      <DataTable nameColumns={namesOfColumns} />
+      <DataTable
+        nameColumns={namesOfColumns}
+        setAddModal={setAddModal}
+        addModal={addModal}
+      />
     </>
   );
 }

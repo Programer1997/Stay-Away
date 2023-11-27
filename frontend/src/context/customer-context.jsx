@@ -5,9 +5,10 @@ const INITIAL_STATE = {
   customers: [],
   updateCustomer: () => {},
   deleteCustomer: () => {},
+  postCustomer: () => {},
 };
 
-const CustomerContext = createContext(INITIAL_STATE);
+const CustomerContext = createContext(INITIAL_STATE); //step1
 
 export const CustomerContextProvider = ({ children }) => {
   const [customers, setCustomers] = useState([]);
@@ -60,8 +61,23 @@ export const CustomerContextProvider = ({ children }) => {
       return users;
     });
   };
+  const postCustomer = (customerData) => {
+    axios
+      .post("/auth/register", {
+        firstName: customerData.firstName,
+        lastName: customerData.lastName,
+        email: customerData.email,
+        password: customerData.password,
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  const value = { customers, updateCustomer, deleteCustomer };
+  const value = { customers, updateCustomer, deleteCustomer, postCustomer };
 
   return (
     <CustomerContext.Provider value={value}>

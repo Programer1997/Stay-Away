@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from "../panel/fetchDataToTable/fetchDataToTable.jsx";
 
-const Customer = () => {
+const Customer = ({ setAddModal, addModal }) => {
   const namesOfColumns = {
     c1: "ID",
     c2: "First Name",
@@ -11,7 +11,11 @@ const Customer = () => {
   };
   return (
     <>
-      <DataTable nameColumns={namesOfColumns} />
+      <DataTable
+        nameColumns={namesOfColumns}
+        setAddModal={setAddModal}
+        addModal={addModal}
+      />
     </>
   );
 };

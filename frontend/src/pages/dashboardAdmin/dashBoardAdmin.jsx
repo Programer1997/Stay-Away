@@ -13,32 +13,34 @@ import SideBar from "../../components/componentsAdmin/sideBar/sideBar.jsx";
 export default function DashBoardAdmin() {
   const [selectedElement, setSelectedElement] = useState("dashboard");
   const [dataUsers, setDataUsers] = useState([]);
+  const [addModal, setAddModal] = useState(false);
 
   const renderSelectedElement = () => {
     switch (selectedElement) {
       case "dashboard":
         return <DashBoard dataUsers={dataUsers} setDataUsers={setDataUsers} />;
       case "bookings":
-        return <Bookings />;
+        return <Bookings setAddModal={setAddModal} addModal={addModal} />;
       case "settings":
         return <Settings />;
       case "property":
-        return <Property />;
+        return <Property setAddModal={setAddModal} addModal={addModal} />;
       case "customer":
-        return <Customer />;
+        return <Customer setAddModal={setAddModal} addModal={addModal} />;
       default:
         return null;
     }
   };
 
   return (
-    <div className="dashBoardPanel">
+    <div className={`dashBoardPanel ${addModal ? "modalOpened" : ""}`}>
       <SideBar setSelectedElement={setSelectedElement} />
       <div className="panel">
         <Header />
         <div className="elementsEachComponent">{renderSelectedElement()}</div>
-        {console.log(dataUsers)}
+        {/*console.log(dataUsers)*/}
       </div>
+      {addModal && <div className="backgroundOverlay" />}
     </div>
   );
 }

@@ -1,12 +1,15 @@
 $elementsDashboardSection :rgb(248,249,250);
-.dashBoardPanel{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    min-height: 100vh; //I added this line to fill the empty space when the component is no bigger enough
 
-    .panel{
-        width: 80%;
+
+
+    .dashBoardPanel{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh; //I added this line to fill the empty space when the component is no bigger enough
+        
+        .panel{
+            width: 80%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -28,7 +31,7 @@ $elementsDashboardSection :rgb(248,249,250);
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-
+                
                 div{
                     width: 49% !important;
                     background-color:$elementsDashboardSection;
@@ -51,7 +54,6 @@ $elementsDashboardSection :rgb(248,249,250);
                 
             }
             .tableDashboard {
-              
                 background-color:$elementsDashboardSection;
                 border-radius: 10px;
                 height: 35%;
@@ -64,7 +66,23 @@ $elementsDashboardSection :rgb(248,249,250);
         }
         //header  :
         
-
+        
     }
-
+    
 }  
+
+.backgroundOverlay { 
+position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad */
+  z-index: 10; /* Asegura que esté sobre otros elementos */
+  display: none; /* Inicialmente oculto */
+}
+
+.modalOpened .backgroundOverlay{
+    display: block;
+}
+

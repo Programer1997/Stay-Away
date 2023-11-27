@@ -34,7 +34,7 @@ const Navbar = () => {
         {user ? (
           <>
             <span className="userName">
-              Welcome Back, {user.details.firstName}{" "}
+              Welcome Back, {user.firstName}{" "}
             </span>
             <div className="btn-container">
               {user.isAdmin === true ? (
@@ -63,26 +63,6 @@ const Navbar = () => {
         )}
       </div>
     </div>
-
-    // <div className="navbar">
-    //   <div className="navContainer">
-    //     <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-    //       <span className="logo">StayAway</span>
-    //       <button className="logoutBtn">Log out</button>
-    //     </Link>
-    //     {user ? (
-    //       user.username
-    //     ) : (
-    //       <div className="navItems">
-    //         <Link to="/register">
-    //           <button className="navButton">Register</button>
-    //         </Link>
-    //           <button className="navButton" onClick={handleLogout}>Login</button>
-
-    //       </div>
-    //     )}
-    //   </div>
-    // </div>
   );
 };
 

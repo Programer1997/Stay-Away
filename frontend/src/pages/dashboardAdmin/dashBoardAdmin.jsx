@@ -38,7 +38,7 @@ export default function DashBoardAdmin() {
       <div className="panel">
         <Header />
         <div className="elementsEachComponent">{renderSelectedElement()}</div>
-        {console.log(dataUsers)}
+        {/*console.log(dataUsers)*/}
       </div>
       {addModal && <div className="backgroundOverlay" />}
     </div>

@@ -70,7 +70,11 @@ export const CustomerContextProvider = ({ children }) => {
         password: customerData.password,
       })
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
+        setCustomers((prev) => {
+          const users = [...prev, response.data];
+          return users;
+        });
       })
       .catch((err) => {
         console.log(err);

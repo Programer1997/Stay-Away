@@ -6,6 +6,8 @@ import { SearchContextProvider } from "./context/SearchContext";
 import { AuthContextProvider } from "./context/authContext";
 import "bootstrap";
 import { CustomerContextProvider } from "./context/customer-context";
+import { BookingContextProvider} from "./context/bookingsContext.jsx";
+import { PropertyContextProvider} from "./context/propertysContext.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +15,11 @@ root.render(
     <AuthContextProvider>
       <SearchContextProvider>
         <CustomerContextProvider>
-          <App />
+          <BookingContextProvider>
+            <PropertyContextProvider>
+              <App />
+            </PropertyContextProvider>
+          </BookingContextProvider>
         </CustomerContextProvider>
       </SearchContextProvider>
     </AuthContextProvider>

@@ -30,4 +30,30 @@
     font-size: 14px;
     font-weight: 300;
   }
+
+  @media (max-width: 768px) {
+    .pList {
+      flex-direction: column;
+    }
+  
+    .pListItem {
+      width: 100%; 
+      margin-bottom: 20px; 
+    }
+  }
+  
+
+  @media (max-width: 425px) {
+    .pListImg {
+      height: 100px; 
+    }
+  
+    .pListTitles > h1 {
+      font-size: 16px; 
+    }
+  
+    .pListTitles > h2 {
+      font-size: 12px; 
+    }
+  }
   

@@ -3,38 +3,38 @@
 import mongoose from "mongoose"
 const { Schema } = mongoose;
 
-const RoomSchema = new Schema({  
-    title: { 
+const RoomSchema = new Schema({
+    title: {
         type: String,
         required: true,
     },
-    price: { 
+    price: {
         type: Number,
         required: true,
     },
-    maxPeople: { 
+    maxPeople: {
         type: Number,
         required: true,
     },
-    desc: { 
+    desc: {
         type: String,
         required: true,
     },
-    roomNumbers: [{ number: Number, unavailableDates: {type: [Date]}}],
-    
-//example:
+    roomNumbers: [{ number: Number, unavailableDates: { type: [Date] } }],
 
-// {number:101, unavailableDates: []}
-// {number:102, unavailableDates: []}
-// {number:103, unavailableDates: []}
-// {number:104, unavailableDates: []}
-// {number:105, unavailableDates: []}
+    //example:
+
+    // {number:101, unavailableDates: []}
+    // {number:102, unavailableDates: []}
+    // {number:103, unavailableDates: []}
+    // {number:104, unavailableDates: []}
+    // {number:105, unavailableDates: []}
 
 
 
 
 },
-{timestamps: true}
+    { timestamps: true }
 );
 
 export default mongoose.model("Room", RoomSchema);

@@ -66,7 +66,34 @@ const Login = () => {
               Dont have an account yet? You can <Link>register now!</Link>
             </span>
           </div>
+<<<<<<< HEAD
         </div>
+=======
+
+
+    <div className="login">
+        
+      <div className="lContainer">
+        <input
+          type="email"
+          placeholder="email"
+          id="email"
+          onChange={handleChange}
+          className="lInput"
+        />
+        <input
+          type="password"
+          placeholder="password"
+          id="password"
+          onChange={handleChange}
+          className="lInput"
+        />
+        <button disabled={loading} onClick={handleClick} className="lButton">
+          Login
+        </button>
+        {error && <span>{error.message}</span>}
+        <span className="registerLink">Dont have an account yet? You can <Link to="/register">register now!</Link></span>
+>>>>>>> 961ca77e82629da6d22b4f8c3a997133192454df
       </div>
     </>
   );

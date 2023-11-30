@@ -1,4 +1,4 @@
-import { useCallback, useContext } from "react";
+import { useContext } from "react";
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
@@ -7,6 +7,10 @@ const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
   //console.log(user);
   const navigate = useNavigate();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 961ca77e82629da6d22b4f8c3a997133192454df
 
   // const onRent = useCallback(()=>{
   //   if(!user) {
@@ -17,6 +21,10 @@ const Navbar = () => {
 
   // }, [user, navigate])
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 961ca77e82629da6d22b4f8c3a997133192454df
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("user");
@@ -33,6 +41,7 @@ const Navbar = () => {
         {/* //if user is logged in */}
         {user ? (
           <>
+<<<<<<< HEAD
             <span className="userName">
               Welcome Back, {user.details.firstName}{" "}
             </span>
@@ -46,6 +55,13 @@ const Navbar = () => {
                   <span>&#10132;</span>
                 </p>
               ) : null}
+=======
+            <div className="nav-button">
+              
+              <Link to={`/profile/${user._id}`}>
+                <button className="logoutBtn">Hey! {user.username ? user.username : user.firstName + ' ' + user.lastName} 😊</button>
+              </Link>
+>>>>>>> 961ca77e82629da6d22b4f8c3a997133192454df
               <button className="logoutBtn" onClick={handleLogout}>
                 Log out
               </button>

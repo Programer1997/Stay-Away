@@ -1,12 +1,13 @@
-.formRegister {
+.profileRegister {
   margin-top: 150px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
   padding: 35px;
+  align-items: center;
 }
+
 .text {
   width: 100%;
   display: flex;
@@ -14,74 +15,41 @@
   justify-content: space-around;
   padding: 10px;
 }
-.formRegister p {
+
+.profileRegister h1 {
   text-align: center;
 }
-.formRegister h1 {
-  text-align: center;
-}
+
 form {
   width: 40%;
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
+
 .fullName {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 #nameFL {
   width: 48%;
 }
+#elementForm {
+}
+
 .buttonsRegister {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 #btn-ChangeMethod {
   width: 45%;
 }
 #btn-CreateAccount {
   width: 45%;
-}
-
-/* Responsive Adjustments */
-
-/* Tablet and Smaller Devices (e.g., width <= 768px) */
-@media (max-width: 768px) {
-  form {
-    width: 60%;
-  }
-
-  .fullName {
-    flex-direction: column;
-  }
-
-  #nameFL {
-    width: 100%;
-  }
-
-  .buttonsRegister {
-    flex-direction: column;
-  }
-
-  #btn-ChangeMethod,
-  #btn-CreateAccount {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
-
-/* Mobile Devices (e.g., width <= 425px) */
-@media (max-width: 425px) {
-  form {
-    width: 80%;
-  }
-
-  .formRegister {
-    margin-top: 50px;
-  }
 }

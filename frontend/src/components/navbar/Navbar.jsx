@@ -34,7 +34,7 @@ const Navbar = () => {
         {user ? (
           <>
             <span className="userName">
-              Welcome Back, {user.details.firstName}{" "}
+              Welcome Back, {user.firstName}{" "}
             </span>
             <div className="btn-container">
               {user.isAdmin === true ? (

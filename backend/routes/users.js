@@ -1,6 +1,6 @@
 //importuje se express i postavi se express.Router() i eksportuje
 import express from 'express';
-import { deleteUser, getUser, getUsers, updatePassword, updateUserInfo } from '../controllers/userController.js';
+import { deleteUser, getUser, getUsers, updatePassword, updateUserInfo,updateUser } from '../controllers/userController.js';
 import { verifyToken, verifyUser,verifyAdmin } from '../utils/token.js';
 
 const router = express.Router();
@@ -22,7 +22,7 @@ const router = express.Router();
 //GET All users|| testing purpose dont need verifyAdmin
 router.get("/testing",getUsers);
 router.delete("/testing/:id",deleteUser);
-// router.put("/testing/:id", updateUser)
+router.put("/testing/:id", updateUser);
 
 //UPDATE:(owner ili admin moze updatovati)
 // router.put("/:id",verifyUser, updateUser)

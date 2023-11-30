@@ -12,17 +12,17 @@ export default function Profile() {
   const [currentUser, setCurrentUser] = useState({
     fname: "",
     lname: "",
-    Email: ""
+    Email: "",
   });
 
   useEffect(() => {
-    Axios.get(`http://localhost:8000/api/users/${id}`, { withCredentials: true })
+    Axios.get(`/users/${id}`, { withCredentials: true })
       .then((response) => {
         setUserData(response.data);
         setCurrentUser({
           fname: response.data.firstName,
           lname: response.data.lastName,
-          Email: response.data.email
+          Email: response.data.email,
         });
       })
       .catch((err) => {
@@ -30,42 +30,43 @@ export default function Profile() {
       });
   }, [id]);
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     postDataServer(currentUser);
   };
 
   const postDataServer = (currentUser) => {
-    Axios.put(`http://localhost:8000/api/users/${id}`, {
-      firstName: currentUser.fname,
-      lastName: currentUser.lname,
-    }, { withCredentials: true })
+    Axios.put(
+      `/users/${id}`,
+      {
+        firstName: currentUser.fname,
+        lastName: currentUser.lname,
+      },
+      { withCredentials: true }
+    )
       .then((response) => {
         setUserData(response.data);
         setCurrentUser({
           fname: response.data.firstName,
           lname: response.data.lastName,
-          Email: response.data.email
+          Email: response.data.email,
         });
-        toast.success('User information edited successfully!', {
+        toast.success("User information edited successfully!", {
           autoClose: 2000,
         });
       })
       .catch((err) => {
-        toast.error('User information editing failed!', {
+        toast.error("User information editing failed!", {
           autoClose: 2000,
         });
         console.log(`we have an error in this request, ${err}`);
       });
   };
 
-
-
   const changingField = (e) => {
     setCurrentUser({
       ...currentUser,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -75,7 +76,6 @@ export default function Profile() {
 
   return (
     <>
-
       <ProfileNav />
 
       <div className="profileRegister">
@@ -89,7 +89,7 @@ export default function Profile() {
                 className="form-control"
                 type="text"
                 name="fname"
-                value={currentUser.fname || ''}
+                value={currentUser.fname || ""}
                 placeholder="Francisco"
                 onChange={changingField}
               />
@@ -101,7 +101,7 @@ export default function Profile() {
                 className="form-control"
                 type="text"
                 name="lname"
-                value={currentUser.lname || ''}
+                value={currentUser.lname || ""}
                 placeholder="Murcia"
                 onChange={changingField}
               />
@@ -113,7 +113,7 @@ export default function Profile() {
             <input
               type="email"
               name="Email"
-              value={currentUser.Email || ''}
+              value={currentUser.Email || ""}
               readOnly
               className="form-control"
               placeholder="name@example.com"
@@ -122,11 +122,19 @@ export default function Profile() {
           </div>
 
           <div className="buttonsRegister">
-            <button type="submit" className="btn btn-primary" id="btn-ChangeMethod">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              id="btn-ChangeMethod"
+            >
               Save
             </button>
 
-            <Link to={`/changepassword/${id}`} className="btn btn-danger" id="btn-CreateAccount">
+            <Link
+              to={`/changepassword/${id}`}
+              className="btn btn-danger"
+              id="btn-CreateAccount"
+            >
               Change Password
             </Link>
           </div>

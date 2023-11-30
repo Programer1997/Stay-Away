@@ -15,7 +15,6 @@
   text-align: center;
 }
 
-<<<<<<< HEAD
 
 .homeContainer{
     margin-top: 50px;
@@ -62,19 +61,3 @@
     transform: translate(-50%,-50%) scale(1.1);
   }
  
-=======
-/* Tablet and Smaller Devices (e.g., width <= 768px) */
-@media (max-width: 768px) {
-  .homeTitle {
-    font-size: 18px;
-  }
-}
-
-/* Mobile Devices (e.g., width <= 425px) */
-@media (max-width: 425px) {
-  .homeTitle {
-    font-size: 16px;
-    padding: 0 10px;
-  }
-}
->>>>>>> 961ca77e82629da6d22b4f8c3a997133192454df

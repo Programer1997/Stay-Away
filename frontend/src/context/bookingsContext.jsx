@@ -15,7 +15,7 @@ export const BookingContextProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("/bookings/testing")
+      .get("/bookings/")
       .then((response) => {
         setBookingsData(response.data);
       })
@@ -24,7 +24,29 @@ export const BookingContextProvider = ({ children }) => {
       });
   }, []);
 
-  const value = { bookingsData };
+  const deleteBooking = (_id) => {
+    axios
+      .delete(`/bookings/${_id}`)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setBookingsData((prev) => {
+      const users = [...prev];
+      const userIndex = users.findIndex((state) => state._id === _id);
+      users.splice(userIndex, 1);
+
+      return users;
+    });
+  };
+  const updateBooking = () => {
+    console.log("data ready to Update");
+  };
+
+  const value = { bookingsData, deleteBooking, updateBooking };
 
   return (
     <BookingContext.Provider value={value}>{children}</BookingContext.Provider>

@@ -1,4 +1,6 @@
 import Booking from '../models/BookingsModel.js';
+import User from '../models/User.js';
+import Property from '../models/PropertysModel.js'; 
 
 export const getBookings = (req,res)=>{
     res.send("fetching data since bookings data base");
@@ -53,9 +55,12 @@ export const getSingleBooking = async (req, res, next) => {
 export const getAllBookings = async (req, res, next) => {
   //const { min, max, ...others } = req.query;
   try {
-    const bookings = await Booking.find();
+    const bookings = await Booking.find()
+    .populate('user','firstName')
+    .populate('property','title');
     res.status(200).json(bookings);
   } catch (err) {
     next(err);
   }
 };
+

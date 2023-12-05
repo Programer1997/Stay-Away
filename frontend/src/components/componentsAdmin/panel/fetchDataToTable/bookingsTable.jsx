@@ -3,14 +3,15 @@ import TableList from "../listElements/listElementsBookings.jsx";
 import HeaderTable from "../listElements/headerTable.jsx";
 import FooterTable from "../listElements/footerTable.jsx";
 import "./fetchDataToTable.scss";
-import { useCustomerContext } from "../../../../context/customer-context.jsx";
+import { useBookingContext } from "../../../../context/bookingsContext";
 
 import AddModal from "./addModal.jsx"; // Loading modal component
 
 //testing Hook  :
 
 const TableData = ({ nameColumns, setAddModal, addModal }) => {
-  const { customers, updateCustomer, deleteCustomer } = useCustomerContext();
+  const { bookingsData, deleteBooking, updateBooking } = useBookingContext();
+  console.log(bookingsData);
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage] = useState(5);
   const [searchFilter, setSearchFilter] = useState("");
@@ -19,8 +20,8 @@ const TableData = ({ nameColumns, setAddModal, addModal }) => {
   const [animationModal, setAnimationModal] = useState(false);
 
   //filter the data by seacrh but All the data no just the data showed up in that moment
-  const filteredCustomers = customers.filter((user) =>
-    user.firstName.toLowerCase().includes(searchFilter.toLowerCase())
+  const filteredCustomers = bookingsData.filter((user) =>
+    user._id.toLowerCase().includes(searchFilter.toLowerCase())
   );
   const initialValue = (currentPage - 1) * elementsPerPage;
   const lastValue = initialValue + elementsPerPage;
@@ -69,16 +70,16 @@ const TableData = ({ nameColumns, setAddModal, addModal }) => {
               <TableList
                 key={index}
                 idValue={user._id}
-                firstName={user.firstName}
-                lastName={user.lastName}
-                email={user.email}
-                username={user.username}
+                userName={user.user ? user.user.firstName : " "}
+                titleProperty={user.property ? user.property.title : " "}
+                checkIn={user.checkInDate}
+                checkOut={user.checkOutDate}
                 className={index % 2 === 0 ? "evenRow" : ""}
                 handleEdit={(dataUpdated) => {
-                  updateCustomer(dataUpdated);
+                  updateBooking(dataUpdated);
                 }}
                 handleDelete={() => {
-                  deleteCustomer(user._id);
+                  deleteBooking(user._id);
                 }}
               />
             ))}

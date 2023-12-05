@@ -4,17 +4,25 @@
     font-size: 1rem;
     margin-top: 50px;
     margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .footerLists{
     width: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .footerList{
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .footerListItems{
     color: blueviolet;

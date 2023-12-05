@@ -67,6 +67,8 @@ const List = (props) => {
           props.email
         )}
       </td>
+      <td>{/*here put check-in data*/}</td>
+      <td>{/*here put check-in data*/}</td>
       <td>
         {isEditing ? (
           <button className="edit-btn" onClick={SaveEdition}>

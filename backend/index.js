@@ -5,8 +5,9 @@ import authRoute from './routes/auth.js'
 import usersRoute from './routes/users.js'
 import hotelsRoute from './routes/hotels.js'
 import roomsRoute from './routes/rooms.js'
-import bookingsRoute from './routes/bookings.js'
 import propertyRoute from './routes/property.js'
+import bookingsRoute from './routes/bookings.js';
+import locationRoute from './routes/location.js';
 import cookieParser from 'cookie-parser'
 
 const app = express()
@@ -44,8 +45,10 @@ app.use('/api/auth', authRoute)
 app.use('/api/hotels', hotelsRoute)
 app.use('/api/rooms', roomsRoute)
 app.use('/api/users', usersRoute)
-app.use('/api/bookings', bookingsRoute)
+
 app.use('/api/property', propertyRoute)
+app.use('/api/bookings', bookingsRoute)
+app.use('/api/location', locationRoute)
 
 //error handling middleware - 
 app.use((err, req, res, next) => {

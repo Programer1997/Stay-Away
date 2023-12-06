@@ -1,6 +1,6 @@
 import Booking from '../models/BookingsModel.js';
-import User from '../models/User.js';
-import Property from '../models/PropertysModel.js'; 
+/*import User from '../models/User.js';
+import Property from '../models/PropertysModel.js'; */
 
 export const getBookings = (req,res)=>{
     res.send("fetching data since bookings data base");
@@ -20,6 +20,7 @@ export const createBooking = async (req, res, next) =>  {
 //UPDATE:
 
 export const updateBooking = async (req, res, next) =>  {
+    
     try{
         const updatedBooking = await Booking.findByIdAndUpdate(req.params.id, 
             {$set: req.body},

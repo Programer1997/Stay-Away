@@ -42,8 +42,31 @@ export const BookingContextProvider = ({ children }) => {
       return users;
     });
   };
-  const updateBooking = () => {
-    console.log("data ready to Update");
+  const updateBooking = (updatedData) => {
+    const { _id, checkInDate, checkOutDate } = updatedData;
+    if (updatedData) {
+      //console.log(updatedData);
+      axios
+        .put(`/bookings/${_id}`, { checkInDate, checkOutDate })
+        .then((response) => {
+          console.log(response.data);
+          axios
+            .get("/bookings/")
+            .then((response) => {
+              setBookingsData(response.data);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+
+          alert("it was succesfully updated");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("the information did not save succesfully");
+    }
   };
 
   const value = { bookingsData, deleteBooking, updateBooking };

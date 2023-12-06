@@ -5,13 +5,13 @@ import FooterTable from "../listElements/footerTable.jsx";
 import "./fetchDataToTable.scss";
 import { useBookingContext } from "../../../../context/bookingsContext";
 
-import AddModal from "./addModal.jsx"; // Loading modal component
+import AddModalBooking from "./addModalBookings.jsx"; // Loading modal component
 
 //testing Hook  :
 
 const TableData = ({ nameColumns, setAddModal, addModal }) => {
   const { bookingsData, deleteBooking, updateBooking } = useBookingContext();
-  console.log(bookingsData);
+  //console.log(bookingsData);
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage] = useState(5);
   const [searchFilter, setSearchFilter] = useState("");
@@ -38,7 +38,7 @@ const TableData = ({ nameColumns, setAddModal, addModal }) => {
   return (
     <>
       {addModal && (
-        <AddModal
+        <AddModalBooking
           setAddModal={setAddModal}
           animationModal={animationModal}
           setAnimationModal={setAnimationModal}

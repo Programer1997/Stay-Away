@@ -1,19 +1,14 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
+//import { format } from "date-fns";
 
 const List = (props) => {
-  const date1 = new Date(props.checkIn);
-  const formattedDate1 = format(date1, "yyyy-MM-dd");
-  const date2 = new Date(props.checkOut);
-  const formattedDate2 = format(date2, "yyyy-MM-dd");
+  const formattedDate1 = props.checkIn.slice(0, 10);
+  const formattedDate2 = props.checkOut.slice(0, 10);
 
   const initialValues = {
     _id: props.idValue,
-    userName: props.userName,
-    rol: " ",
-    property: props.titleProperty,
-    checkIn: formattedDate1,
-    checkOut: formattedDate2,
+    checkInDate: formattedDate1,
+    checkOutDate: formattedDate2,
   };
 
   const [isEditing, setIsEditing] = useState(false);
@@ -39,64 +34,31 @@ const List = (props) => {
   return (
     <tr className={props.className}>
       <td title={props.idValue}>{props.idValue.slice(-6) + "..."}</td>
+      <td>{props.userName}</td>
+      <td> </td>
+      <td>{props.titleProperty}</td>
       <td>
         {isEditing ? (
           <input
-            type="text"
-            name="userName"
-            value={dataEditing.userName}
+            type="date"
+            name="checkInDate"
+            value={dataEditing.checkInDate}
             onChange={handleChange}
           />
         ) : (
-          props.userName
-        )}
-      </td>
-      <td>
-        {isEditing ? (
-          <input
-            type="text"
-            name="rol"
-            value={dataEditing.rol}
-            onChange={handleChange}
-          />
-        ) : (
-          " "
-        )}
-      </td>
-      <td>
-        {isEditing ? (
-          <input
-            type="text"
-            name="property"
-            value={dataEditing.property}
-            onChange={handleChange}
-          />
-        ) : (
-          props.titleProperty
+          dataEditing.checkInDate
         )}
       </td>
       <td>
         {isEditing ? (
           <input
             type="date"
-            name="checkIn"
-            value={dataEditing.checkIn}
+            name="checkOutDate"
+            value={dataEditing.checkOutDate}
             onChange={handleChange}
           />
         ) : (
-          dataEditing.checkIn
-        )}
-      </td>
-      <td>
-        {isEditing ? (
-          <input
-            type="date"
-            name="checkOut"
-            value={dataEditing.checkOut}
-            onChange={handleChange}
-          />
-        ) : (
-          dataEditing.checkOut
+          dataEditing.checkOutDate
         )}
       </td>
       <td>

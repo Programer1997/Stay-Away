@@ -71,16 +71,10 @@ const Header = ({ type }) => {
           <div className="headerList">
             <div className="headerListItem active">
               <FontAwesomeIcon icon={faBed} />
-              <span>Stays</span>
+              <span onClick={()=>navigate("/")}>Stays</span>
             </div>
-            <div className="headerListItem">
-              <FontAwesomeIcon icon={faPlane} />
-              <span>Flights</span>
-            </div>
-            <div className="headerListItem">
-              <FontAwesomeIcon icon={faCar} />
-              <span>Car rentals</span>
-            </div>
+            
+           
           </div>
           {type !== "list" && (
             <>

@@ -9,15 +9,15 @@
   align-items: center;
 }
 
-.footerLists{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+.footerLists {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.footerList{
-    list-style: none;
-    padding: 0;
+.footerList {
+  list-style: none;
+  padding: 0;
 }
 
 .footerListItems {

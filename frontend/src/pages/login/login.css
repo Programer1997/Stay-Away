@@ -1,55 +1,75 @@
 .login {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.lContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lInput {
+  width: 500px;
+  height: 30px;
+  padding: 10px;
+}
+
+.lButton {
+  border: none;
+  padding: 10px 20px;
+  background-color: blueviolet;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.lButton:hover {
+  background-color: rgb(91, 24, 155);
+}
+
+.lButton:disabled {
+  background-color: #0071c28c;
+  cursor: not-allowed;
+}
+
+.registerLink {
+  text-decoration: none;
+  margin-top: 1.5rem;
+  color: blueviolet;
+  font-size: small;
+  text-align: center;
+}
+
+.logo {
+  color: blueviolet;
+}
+
+nav {
+  background-color: blueviolet;
+}
+
+@media (max-width: 768px) {
+  .lInput {
+    width: 80%;
   }
-  
-  .lContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .lInput{
-    width: 500px;
-    height: 30px;
-    padding: 10px;
-  }
-  
-  .lButton {
-    border: none;
-    padding: 10px 20px;
-    background-color: blueviolet;
-    /* #0071c2; */
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  .lButton:hover {
-    background-color: rgb(91, 24, 155);
-  }
-  .lButton:disabled{
-    background-color: #0071c28c;
-    cursor: not-allowed;
-  }
-  .navLogin{
-    display: flex;
+}
+
+@media (max-width: 425px) {
+  .lInput {
+    width: 100%;
   }
 
-  .registerLink{
-    text-decoration: none;
-    margin-top: 1.5rem;
-    color: blueviolet;
-    font-size: small;
-    text-align: center;
+  .lContainer {
+    width: 100%;
+    padding: 0 20px;
   }
-  .logo{
-    color: blueviolet;
+
+  .login {
+    padding: 0 20px;
   }
-  nav{
-    background-color: blueviolet;
-  }
-  
+}

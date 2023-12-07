@@ -29,17 +29,11 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     },
+    reviews: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
+    }]
 },
 {timestamps: true}
 );
 export default mongoose.model('User', userSchema);
-
-// {
-//     "_id": "60f6dfc9a4d5f90b842ce1e9",
-//     "username": "john_doe",
-//     "email": "john@example.com",
-//     "password": "hashed_password_here",
-//     "isAdmin": false,
-//     "createdAt": "2023-07-20T10:21:13.223Z",
-//     "updatedAt": "2023-07-20T10:21:13.223Z"
-// }

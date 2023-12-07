@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import TableList from "../listElements/listElementsBookings.jsx";
+import TableListProperty from "../listElements/listElementsPropertys.jsx";
 import HeaderTableNoAdd from "../listElements/headerTableNoAdd.jsx";
 import FooterTable from "../listElements/footerTable.jsx";
 import "./fetchDataToTable.scss";
-import { useBookingContext } from "../../../../context/bookingsContext";
+import { usePropertyContext } from "../../../../context/propertysContext.jsx";
 
 //testing Hook  :
 
 const TableData = ({ nameColumns }) => {
-  const { bookingsData, deleteBooking, updateBooking } = useBookingContext();
-  //console.log(bookingsData);
+  const { property, deleteProperty, updateProperty } = usePropertyContext();
+  console.log(property);
   const [currentPage, setCurrentPage] = useState(1);
   const [elementsPerPage] = useState(5);
   const [searchFilter, setSearchFilter] = useState("");
 
   //filter the data by seacrh but All the data no just the data showed up in that moment
-  const filteredCustomers = bookingsData.filter((user) =>
-    user._id.toLowerCase().includes(searchFilter.toLowerCase())
+  const filteredCustomers = property.filter((property) =>
+    property.city.toLowerCase().includes(searchFilter.toLowerCase())
   );
   const initialValue = (currentPage - 1) * elementsPerPage;
   const lastValue = initialValue + elementsPerPage;
@@ -46,25 +46,24 @@ const TableData = ({ nameColumns }) => {
               <th>{nameColumns.c4}</th>
               <th>{nameColumns.c5}</th>
               <th>{nameColumns.c6}</th>
-              <th>{nameColumns.c7}</th>
             </tr>
           </thead>
 
           <tbody>
-            {visibleData.map((user, index) => (
-              <TableList
-                key={index}
-                idValue={user._id}
-                userName={user.user ? user.user.firstName : " "}
-                titleProperty={user.property ? user.property.title : " "}
-                checkIn={user.checkInDate}
-                checkOut={user.checkOutDate}
+            {visibleData.map((property, index) => (
+              <TableListProperty
+                key={property._id}
+                idValue={property._id}
+                userName={property.user.email}
+                address={property.address}
+                city={property.city}
+                price={property.price}
                 className={index % 2 === 0 ? "evenRow" : ""}
                 handleEdit={(dataUpdated) => {
-                  updateBooking(dataUpdated);
+                  updateProperty(dataUpdated);
                 }}
                 handleDelete={() => {
-                  deleteBooking(user._id);
+                  deleteProperty(property._id);
                 }}
               />
             ))}

@@ -1,19 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import NivoPie from "./charts/nivo_pie";
 import NivoLine from "./charts/nivo_bar";
 import UserTable from "./charts/tableCustomer";
-import Axios from "axios";
+import Item from "./dashBoardItems/items";
+import ItemDashBoard from "../../../mocks/itemsDashBoard.json";
+//import Axios from "axios";
+import { useCustomerContext } from "../../../context/customer-context";
+import { useBookingContext } from "../../../context/bookingsContext";
+import { usePropertyContext } from "../../../context/propertysContext";
 
 const DashBoard = (props) => {
-  useEffect(() => {
-    Axios.get("/users/testing")
-      .then((response) => {
-        props.setDataUsers(response.data);
-      })
-      .catch((error) => {
-        console.error("it has occurred an error", error);
-      });
-  }, []);
+  const { bookingsData } = useBookingContext();
+  const { customers } = useCustomerContext();
+  const { property } = usePropertyContext();
 
   const data1 = [
     {
@@ -312,17 +311,25 @@ const DashBoard = (props) => {
   return (
     <>
       <div className="itemsDashboard">
-        <div className="itemDash"></div>
-        <div className="itemDash"></div>
-        <div className="itemDash"></div>
-        <div className="itemDash"></div>
+        {Object.values(ItemDashBoard.elementos_1).map((element) => {
+          return (
+            <Item
+              key={element.id}
+              title={element.title}
+              img={element.img_Url}
+              propertyData={property}
+              customerData={customers}
+              bookingData={bookingsData}
+            />
+          );
+        })}
       </div>
       <div className="chartsDashboard">
         <NivoPie data={data1} />
         <NivoLine data={data2} />
       </div>
       <div className="tableDashboard">
-        <UserTable dataUsers={props.dataUsers} />
+        <UserTable dataUsers={customers} />
       </div>
     </>
   );

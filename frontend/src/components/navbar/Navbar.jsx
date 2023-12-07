@@ -5,18 +5,7 @@ import { AuthContext } from "../../context/authContext";
 
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
-  //console.log(user);
   const navigate = useNavigate();
-
-  // const onRent = useCallback(()=>{
-  //   if(!user) {
-  //     navigate("/login")
-  //   }
-  //   //suprotno
-  //   rentModal.onOpen();
-
-  // }, [user, navigate])
-
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("user");

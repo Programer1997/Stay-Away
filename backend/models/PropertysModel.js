@@ -4,6 +4,8 @@ const propertySchema = new mongoose.Schema({
   title: String,
   description: String,
   price: Number,
+  address:String,
+  city:String,
   location: {
     type: { type: String, default: 'Point' },
     coordinates: [Number] // [longitude, latitude]

@@ -2,13 +2,12 @@ import React, { useState } from "react";
 //import { format } from "date-fns";
 
 const List = (props) => {
-  const formattedDate1 = props.checkIn.slice(0, 10);
-  const formattedDate2 = props.checkOut.slice(0, 10);
-
   const initialValues = {
     _id: props.idValue,
-    checkInDate: formattedDate1,
-    checkOutDate: formattedDate2,
+    address: props.address,
+    city: props.city,
+    price: props.price,
+    userName: props.userName,
   };
 
   const [isEditing, setIsEditing] = useState(false);
@@ -34,33 +33,43 @@ const List = (props) => {
   return (
     <tr className={props.className}>
       <td title={props.idValue}>{props.idValue.slice(-6) + "..."}</td>
-      <td>{props.userName}</td>
-      <td>{/*Rol*/} </td>
-      <td>{props.titleProperty}</td>
       <td>
         {isEditing ? (
           <input
-            type="date"
-            name="checkInDate"
-            value={dataEditing.checkInDate}
+            type="text"
+            name="address"
+            value={dataEditing.address}
             onChange={handleChange}
           />
         ) : (
-          dataEditing.checkInDate
+          dataEditing.address
         )}
       </td>
       <td>
         {isEditing ? (
           <input
-            type="date"
-            name="checkOutDate"
-            value={dataEditing.checkOutDate}
+            type="text"
+            name="city"
+            value={dataEditing.city}
             onChange={handleChange}
           />
         ) : (
-          dataEditing.checkOutDate
+          dataEditing.city
         )}
       </td>
+      <td>
+        {isEditing ? (
+          <input
+            type="text"
+            name="price"
+            value={dataEditing.price}
+            onChange={handleChange}
+          />
+        ) : (
+          dataEditing.price
+        )}
+      </td>
+      <td>{dataEditing.userName}</td>
       <td>
         {isEditing ? (
           <button className="edit-btn" onClick={SaveEdition}>

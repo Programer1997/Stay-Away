@@ -22,11 +22,7 @@
         }
     },
     "elementos_2": {
-        "settings" : {
-            "id" : 5,
-            "img_Url" : "/images/products.png",
-            "title":"settings"
-        },
+        
         "logout": {
             "id" : 6,
             "img_Url":"/images/logout.png",

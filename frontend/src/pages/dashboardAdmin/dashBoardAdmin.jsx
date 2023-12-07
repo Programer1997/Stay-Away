@@ -20,11 +20,11 @@ export default function DashBoardAdmin() {
       case "dashboard":
         return <DashBoard dataUsers={dataUsers} setDataUsers={setDataUsers} />;
       case "bookings":
-        return <Bookings setAddModal={setAddModal} addModal={addModal} />;
+        return <Bookings />;
       case "settings":
         return <Settings />;
       case "property":
-        return <Property setAddModal={setAddModal} addModal={addModal} />;
+        return <Property />;
       case "customer":
         return <Customer setAddModal={setAddModal} addModal={addModal} />;
       default:

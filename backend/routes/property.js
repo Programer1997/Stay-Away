@@ -10,11 +10,11 @@ import {
 
 const router = Express.Router();
 
-router.get('/testing', getProperties); // Cambia la referencia a getProperties
-router.post('/register', createProperty); // Cambia la referencia a createProperty
-router.get('/', getAllProperties); // Cambia la referencia a getAllProperties
-router.delete('/:id', deleteProperty); // Cambia la referencia a deleteProperty
-router.put('/:id', updateProperty); // Cambia la referencia a updateProperty
-router.get('/:id', getSingleProperty); // Cambia la referencia a getSingleProperty
+router.get('/testing', getProperties); //getProperties
+router.post('/register', createProperty); //createProperty
+router.get('/', getAllProperties); //getAllProperties
+router.delete('/:id', deleteProperty); // deleteProperty
+router.put('/:id', updateProperty); // updateProperty
+router.get('/:id', getSingleProperty); // getSingleProperty
 
 export default router;

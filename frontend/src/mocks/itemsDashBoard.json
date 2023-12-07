@@ -1,0 +1,25 @@
+{
+    "elementos_1": {
+        "sells" : {
+            "id" : 1,
+            "img_Url" : "/images/money.png",
+            "title":"Sells"
+        },
+        "properties": {
+            "id" : 2,
+            "img_Url":"/images/property.png",
+            "title": "Property"
+        }, 
+        "bookings": {
+            "id" : 3,
+            "img_Url":"/images/booking.png",
+            "title":"Bookings"
+        },
+        "customer": {
+            "id" : 4,
+            "img_Url":"/images/customers.png",
+            "title":"Customers"
+        }
+    }
+    
+}

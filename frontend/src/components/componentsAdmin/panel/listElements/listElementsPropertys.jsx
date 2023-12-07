@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+//import { format } from "date-fns";
 
 const List = (props) => {
   const initialValues = {
     _id: props.idValue,
-    firstName: props.firstName,
-    lastName: props.lastName,
-    email: props.email,
+    address: props.address,
+    city: props.city,
+    price: props.price,
+    userName: props.userName,
   };
 
   const [isEditing, setIsEditing] = useState(false);
@@ -35,38 +37,39 @@ const List = (props) => {
         {isEditing ? (
           <input
             type="text"
-            name="firstName"
-            value={dataEditing.firstName}
+            name="address"
+            value={dataEditing.address}
             onChange={handleChange}
           />
         ) : (
-          props.firstName
+          dataEditing.address
         )}
       </td>
       <td>
         {isEditing ? (
           <input
             type="text"
-            name="lastName"
-            value={dataEditing.lastName}
+            name="city"
+            value={dataEditing.city}
             onChange={handleChange}
           />
         ) : (
-          props.lastName
+          dataEditing.city
         )}
       </td>
       <td>
         {isEditing ? (
           <input
             type="text"
-            name="email"
-            value={dataEditing.email}
+            name="price"
+            value={dataEditing.price}
             onChange={handleChange}
           />
         ) : (
-          props.email
+          dataEditing.price
         )}
       </td>
+      <td>{dataEditing.userName}</td>
       <td>
         {isEditing ? (
           <button className="edit-btn" onClick={SaveEdition}>

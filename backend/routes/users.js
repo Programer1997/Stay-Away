@@ -5,19 +5,6 @@ import { verifyToken, verifyUser,verifyAdmin } from '../utils/token.js';
 
 const router = express.Router();
 
-//checking auth token get form, svrha je testiranje toke.js-a:
-// router.get("/checkauthentication", verifyToken, (req, res, next)=>{
-//     res.send("Hello user, you are logged in!")
-// })
-
-// router.get("/checkuser/:id", verifyUser, (req,res,next)=>{
-//   res.send("hello user, you are logged in and you can delete your account")
-// })
-
-// router.get("/checkadmin/:id", verifyAdmin, (req,res,next)=>{
-//   res.send("hello admin, you are logged in and you can delete all accounts")
-// })
-
 
 //GET All users|| testing purpose dont need verifyAdmin
 router.get("/testing",getUsers);
@@ -39,3 +26,16 @@ router.get("/:id",verifyUser, getUsers)
 
 
 export default router;
+
+//checking auth token get form, svrha je testiranje toke.js-a:
+// router.get("/checkauthentication", verifyToken, (req, res, next)=>{
+//     res.send("Hello user, you are logged in!")
+// })
+
+// router.get("/checkuser/:id", verifyUser, (req,res,next)=>{
+//   res.send("hello user, you are logged in and you can delete your account")
+// })
+
+// router.get("/checkadmin/:id", verifyAdmin, (req,res,next)=>{
+//   res.send("hello admin, you are logged in and you can delete all accounts")
+// })

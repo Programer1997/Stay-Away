@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+//import { format } from "date-fns";
 
 const List = (props) => {
+  const formattedDate1 = props.checkIn.slice(0, 10);
+  const formattedDate2 = props.checkOut.slice(0, 10);
+
   const initialValues = {
     _id: props.idValue,
-    firstName: props.firstName,
-    lastName: props.lastName,
-    email: props.email,
+    checkInDate: formattedDate1,
+    checkOutDate: formattedDate2,
   };
 
   const [isEditing, setIsEditing] = useState(false);
@@ -31,40 +34,31 @@ const List = (props) => {
   return (
     <tr className={props.className}>
       <td title={props.idValue}>{props.idValue.slice(-6) + "..."}</td>
+      <td>{props.userName}</td>
+      <td>{/*Rol*/} </td>
+      <td>{props.titleProperty}</td>
       <td>
         {isEditing ? (
           <input
-            type="text"
-            name="firstName"
-            value={dataEditing.firstName}
+            type="date"
+            name="checkInDate"
+            value={dataEditing.checkInDate}
             onChange={handleChange}
           />
         ) : (
-          props.firstName
+          dataEditing.checkInDate
         )}
       </td>
       <td>
         {isEditing ? (
           <input
-            type="text"
-            name="lastName"
-            value={dataEditing.lastName}
+            type="date"
+            name="checkOutDate"
+            value={dataEditing.checkOutDate}
             onChange={handleChange}
           />
         ) : (
-          props.lastName
-        )}
-      </td>
-      <td>
-        {isEditing ? (
-          <input
-            type="text"
-            name="email"
-            value={dataEditing.email}
-            onChange={handleChange}
-          />
-        ) : (
-          props.email
+          dataEditing.checkOutDate
         )}
       </td>
       <td>

@@ -1,102 +1,129 @@
-import React, { useState } from 'react';
-import './list.css';
-import ProfileNav from '../../components/profileNav/ProfileNav';
+import "./list.css";
+import Navbar from "../../components/navbar/Navbar";
+import Header from "../../components/header/Header";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { format } from "date-fns";
+import { DateRange } from "react-date-range";
+import SearchItem from "../../components/itemSearch/SearchItem";
+import useFetch from "../../hooks/useFetch";
+// import SearchItem from "../../components/searchItem/SearchItem";
 
-// Mock data for hotels
-const mockHotels = [
-  {
-    _id: "1",
-    name: "Ocean View Retreat",
-    type: "Resort",
-    city: "Miami",
-    address: "123 Beach Ave, Miami, FL",
-    distance: "500m from beach",
-    title: "Luxury resort with ocean view",
-    photos: [
-      "/images/room-img1.jpeg",
-      "/images/room-img2.jpeg",
-      // more photo URLs
-    ],
-    desc: "A luxurious resort offering stunning ocean views and top-notch amenities.",
-    rating: 4.5,
-    rooms: ["Deluxe Room", "Standard Room", "Suite"],
-    cheapestPrice: 250,
-    featured: true,
-  },
-  {
-    _id: "2",
-    name: "City Lights",
-    type: "Hotel",
-    city: "New York",
-    address: "456 Urban St, New York, NY",
-    distance: "300m from Central Park",
-    title: "Modern hotel in the heart of the city",
-    photos: [
-      "/images/room-img2.jpeg",
-      "/images/city-hotel-img2.jpeg",
-      // more photo URLs
-    ],
-    desc: "Experience the vibrant city life with our modern amenities and close proximity to major attractions.",
-    rating: 4.3,
-    rooms: ["City View Room", "Executive Suite", "Penthouse Suite"],
-    cheapestPrice: 300,
-    featured: false,
-  }
+const List = () => {
+  const location = useLocation();
+  const [destination, setDestination] = useState(location.state.destination);
+  const [dates, setDates] = useState(location.state.dates);
+  const [openDate, setOpenDate] = useState(false);
+  const [options, setOptions] = useState(location.state.options);
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
 
-];
+  const { data, loading, error, reFetch } = useFetch(
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 99999}`
+  );
 
-
-const HotelList = () => {
-  const [activeHotel, setActiveHotel] = useState(null);
-
-  const toggleAccordion = (hotelId) => {
-    setActiveHotel(activeHotel === hotelId ? null : hotelId);
-  };
-
-  const handleAddHotel = () => {
-    // Logic to handle adding a new hotel
-    console.log("Add Hotel button clicked");
+  //handle Click for btn:
+  const handleClick = () => {
+    reFetch();
   };
 
   return (
-    <>
-      <ProfileNav />
-
-      <div className="hotelList">
-        <div className="addHotelButtonContainer">
-          <button className="addHotelButton" onClick={handleAddHotel}>Add a Hotel</button>
-        </div>
-        <div>
-          {mockHotels.map(hotel => (
-            <div className={`hotelCard ${activeHotel === hotel._id ? 'show' : ''}`} key={hotel._id} onClick={() => toggleAccordion(hotel._id)}>
-              <div className="hotelCardHeader">
-                {hotel.name} - {hotel.type}
+    <div>
+      <div>
+        <Navbar />
+        <Header type="list" />
+        <div className="listContainer">
+          <div className="listWrapper">
+            <div className="listSearch">
+              <h1 className="lsTitle">Search</h1>
+              <div className="lsItem">
+                <label>Destination</label>
+                <input placeholder={destination} type="text" />
               </div>
-              <img src={hotel.photos[0]} alt={`${hotel.name}`} className="hotelImage" />
-              <div className="hotelCardBody">
-                <h3 className="hotelTitle">{hotel.title}</h3>
-                <p className="hotelDesc">{hotel.desc}</p>
-                <div className="hotelInfo">
-                  <p className="hotelLocation">
-                    <span className="infoLabel">Location:</span> {hotel.city}, {hotel.address}
-                  </p>
-                  <p className="hotelDistance">
-                    <span className="infoLabel">Distance:</span> {hotel.distance} from main attractions
-                  </p>
-                  <p className="hotelRating">
-                    <span className="infoLabel">Rating:</span> {hotel.rating} / 5
-                  </p>
-                  <p className="hotelPrice">
-                    <span className="infoLabel">Price:</span> Starting at ${hotel.cheapestPrice} per night
-                  </p>
+              <div className="lsItem">
+                <label>Check-in Date</label>
+                <span onClick={() => setOpenDate(!openDate)}>{`${format(
+                  dates[0].startDate,
+                  "MM/dd/yyyy"
+                )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
+                {openDate && (
+                  <DateRange
+                    onChange={(item) => setDates([item.selection])}
+                    minDate={new Date()}
+                    ranges={dates}
+                  />
+                )}
+              </div>
+              <div className="lsItem">
+                <label>Options</label>
+                <div className="lsOptions">
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">
+                      Min price <small>per night</small>
+                    </span>
+                    <input
+                      type="number"
+                      onChange={(e) => setMin(e.target.value)}
+                      className="lsOptionInput"
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">
+                      Max price <small>per night</small>
+                    </span>
+                    <input
+                      type="number"
+                      onChange={(e) => setMax(e.target.value)}
+                      className="lsOptionInput"
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">Adult</span>
+                    <input
+                      type="number"
+                      min={1}
+                      className="lsOptionInput"
+                      placeholder={options.adult}
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">Children</span>
+                    <input
+                      type="number"
+                      min={0}
+                      className="lsOptionInput"
+                      placeholder={options.children}
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">Room</span>
+                    <input
+                      type="number"
+                      min={1}
+                      className="lsOptionInput"
+                      placeholder={options.room}
+                    />
+                  </div>
                 </div>
               </div>
+              <button onClick={handleClick}>Search</button>
             </div>
-          ))}
+            <div className="listResult">
+              {loading ? (
+                "loading"
+              ) : (
+                <>
+                  {data.map((item) => (
+                    <SearchItem item={item} key={item._id} />
+                  ))}
+                </>
+              )}
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
-}
+};
 
-export default HotelList;
+export default List;

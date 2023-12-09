@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./searchItem.css";
 
 const SearchItem = ({ item }) => {
   return (
@@ -11,9 +12,7 @@ const SearchItem = ({ item }) => {
         <span className="siSubtitle">
           Beautiful hotel in one of the most charming cities.
         </span>
-        <span className="siFeatures">
-          {item.desc}
-        </span>
+        <span className="siFeatures">{item.desc}</span>
         <span className="siCancelOp">Free cancellation</span>
         <span className="siCancelOpSubtitle">
           You can cancel later, so lock in this great price today!

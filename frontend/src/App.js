@@ -19,7 +19,7 @@ function App() {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='/hotels' element={<Hotel/>} />
+        <Route path='/hotels' element={<List/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/hotels/:id' element={<Hotel />} />
         <Route exact path='/chat' element={<ChatPage />} />

@@ -1,0 +1,93 @@
+.profile-container {
+  background-color: blueviolet;
+}
+
+.profile-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+.profile-navbar .logo a {
+  color: blueviolet !important;
+}
+
+.profile-navbar .logo {
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  text-decoration: none;
+}
+
+.profile-navbar .logo a {
+  text-decoration: none;
+}
+
+.profile-links a {
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.profile-links .logbtn {
+  color: white !important;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+}
+
+.profile-links {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-links a:hover {
+  color: blueviolet !important;
+  background: white;
+}
+
+.profile-links .logbtn:hover {
+  color: blueviolet !important;
+  background: white;
+}
+
+/* Responsive Adjustments */
+
+/* Tablet and Smaller Devices (e.g., width <= 768px) */
+@media (max-width: 768px) {
+  .profile-navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .profile-links a,
+  .profile-links .logbtn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+/* Mobile Devices (e.g., width <= 425px) */
+@media (max-width: 425px) {
+  .profile-navbar .logo {
+    margin-bottom: 10px;
+  }
+
+  .profile-links a,
+  .profile-links .logbtn {
+    padding: 8px;
+  }
+}

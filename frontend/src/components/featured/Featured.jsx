@@ -28,7 +28,7 @@ const Featured = () => {
               />
               <div className="featuredTitles">
                 <h1>{city.city}</h1>
-                <h2>{data[index]} properties</h2>
+                <h2>{city.hotels.length} properties</h2>
               </div>
             </div>
           ))}

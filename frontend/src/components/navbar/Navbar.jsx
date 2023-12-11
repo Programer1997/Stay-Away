@@ -22,6 +22,10 @@ const Navbar = () => {
     setDropMenuOpen(false);
     navigate(`/profile/${user.details._id}`);
   };
+  const menuHost = () => {
+    setDropMenuOpen(false);
+    navigate(`/host`);
+  };
   const handleClickOutside = (event) => {
     if (dropMenuOpen === true) {
       if (event.target.closest(".dropMenuContainer") === null) {
@@ -65,11 +69,14 @@ const Navbar = () => {
             </div>
             {dropMenuOpen ? (
               <div className="dropMenuContainer">
-                <p className="logoutText" onClick={handleLogout}>
-                  Logout
-                </p>
                 <p className="profileText" onClick={menuProfile}>
                   Profile
+                </p>
+                <p className="hostText" onClick={menuHost}>
+                  Become into Host
+                </p>
+                <p className="logoutText" onClick={handleLogout}>
+                  Logout
                 </p>
               </div>
             ) : null}

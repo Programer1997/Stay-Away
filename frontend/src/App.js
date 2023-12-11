@@ -12,6 +12,7 @@ import DashBoardAdmin from './pages/dashboardAdmin/dashBoardAdmin.jsx';
 import ChangePassowrd from './pages/profile/changepassword/ChangePassword.jsx';
 import Reviews from './pages/profile/reviews/Reviews.jsx';
 import ChatPage from './pages/chat/chat.jsx';
+import HostSection from './pages/becomeHost/becomeHost.jsx';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route exact path='/reviews/:id' element={<Reviews />} />
         <Route exact path='/dashBoardAdmin' element={<DashBoardAdmin />} />
         <Route exact path='/changepassword/:id' element={<ChangePassowrd />} />
+        <Route exact path='/host' element={<HostSection/>}/>
       </Routes>
     </BrowserRouter>
   );

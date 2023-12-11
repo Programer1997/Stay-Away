@@ -10,6 +10,7 @@ export default function BecomeHost() {
   const { user, dispatch } = useContext(AuthContext);
   //console.log(user);
   const [showForm, setShowForm] = useState(false);
+  const [animation, setAnimation] = useState(false);
   return (
     <>
       <ProfileNav />
@@ -18,9 +19,16 @@ export default function BecomeHost() {
         lastName={user.details.lastName}
         showForm={showForm}
         setShowForm={setShowForm}
+        animation={animation}
+        setAnimation={setAnimation}
       />
       {showForm ? (
-        <NewProperty showForm={showForm} setShowForm={setShowForm} />
+        <NewProperty
+          showForm={showForm}
+          setShowForm={setShowForm}
+          animation={animation}
+          setAnimation={setAnimation}
+        />
       ) : null}
       <BenefitsBecomeHost />
       <Footer />

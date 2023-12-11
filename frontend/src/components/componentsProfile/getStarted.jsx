@@ -2,11 +2,14 @@ import React from "react";
 import "./styles.scss";
 
 const GetStarted = (props) => {
-  const { firstName, showForm, setShowForm } = props;
+  const { firstName, showForm, setShowForm, setAnimation } = props;
 
   const handleShowForm = () => {
     console.log("handle show form working on");
     setShowForm(true);
+    setTimeout(() => {
+      setAnimation(true);
+    }, 500);
   };
 
   return (

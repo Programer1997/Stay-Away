@@ -1,8 +1,13 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useContext } from "react";
+//import axios from "axios";
+import { AuthContext } from "../../context/authContext";
+//import { getLocation } from "../../hooks/geoLib";
 
 const NewPropertyForm = (props) => {
-  const { setShowForm } = props;
+  const { setShowForm, animation, setAnimation } = props;
+  const { user } = useContext(AuthContext);
+  //console.log(user);
+
   const [propertyData, setPropertyData] = useState({
     title: "",
     description: "",
@@ -10,6 +15,7 @@ const NewPropertyForm = (props) => {
     address: "",
     city: "",
     photos: [], // save photos here
+    user: user.details._id,
   });
 
   const handleChange = (e) => {
@@ -19,17 +25,20 @@ const NewPropertyForm = (props) => {
 
   const handlePhotoChange = (e) => {
     const files = Array.from(e.target.files);
+    //console.log(files);
     const formData = new FormData();
     files.forEach((file, i) => {
       formData.append(`photo${i}`, file);
+      //console.log(formData);
     });
+    //console.log(formData);
 
     // Realizar la petición a tu servidor aquí para subir las fotos
     // Por ejemplo:
-    // axios.post('/api/upload-photos', formData).then((response) => {
-    //   // Guardar las rutas de las fotos en el state de la propiedad
-    //   setPropertyData({ ...propertyData, photos: response.data.photoUrls });
-    // });
+    /*axios.post("/property/register", formData).then((response) => {
+      //   // Guardar las rutas de las fotos en el state de la propiedad
+      setPropertyData({ ...propertyData, photos: response.data.photos });
+    });*/
   };
 
   const handleSubmit = (e) => {
@@ -41,12 +50,16 @@ const NewPropertyForm = (props) => {
     // }).catch((error) => {
     //   console.error(error);
     // });
-    console.log("handle submit working on");
+    console.log("handle submit working on", propertyData);
     setShowForm(false);
+    setAnimation(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className={`formNewProperty ${animation ? "active" : ""}`}
+    >
       <input
         type="text"
         name="title"
@@ -83,7 +96,9 @@ const NewPropertyForm = (props) => {
         onChange={handleChange}
       />
       <input type="file" name="photos" multiple onChange={handlePhotoChange} />
-      <button type="submit">Save Property</button>
+      <button type="submit" className="btn btn-success">
+        Save Property
+      </button>
     </form>
   );
 };

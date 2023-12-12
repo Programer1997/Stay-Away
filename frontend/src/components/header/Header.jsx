@@ -81,7 +81,7 @@ const Header = ({ type }) => {
             {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faBed} className="headerIcon" />
+                <FontAwesomeIcon icon={faBed} className="headerIcon" /> 
 
                 <input
                   type="text"

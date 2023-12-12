@@ -20,8 +20,8 @@ const Featured = () => {
           {citiesData.map((city, index) => (
             <div className="featuredItem" key={city._id}>
               <img
-                src={city.hotels[0].imgSrc} // Replace with actual image URL property from your city data
-                alt={city.city} // Replace with actual city name property
+                src={city.hotels[0].imgSrc} 
+                alt={city.city} 
                 className="featuredImg"
               />
               <div className="featuredTitles">

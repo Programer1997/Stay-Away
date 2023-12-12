@@ -1,28 +1,35 @@
 .footer {
-  width: 100%;
-  max-width: 1024px;
+  width: 100%; 
+  /* max-width: 1024px; */
   font-size: 1rem;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 50px;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  /* margin-left: 50px; */
   align-items: center;
+  background-color: rgb(199, 168, 168);
+  
 }
 
 .footerLists {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  text-align: center;
   flex-wrap: wrap;
 }
 
 .footerList {
   list-style: none;
-  padding: 0;
+   padding: 0; 
 }
 
 .footerListItems {
-  color: blueviolet;
+  color: black;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -33,6 +40,11 @@
   width: 100%;
 }
 
+.footer-first{
+  text-decoration: underline;
+  font-weight: 800;
+ 
+}
 /* Responsive Adjustments */
 
 /* Tablet and Smaller Devices (e.g., width <= 768px) */

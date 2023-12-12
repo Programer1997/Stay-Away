@@ -61,7 +61,7 @@
   padding: 10px 0px;
   border-radius: 5px;
   position: absolute;
-  bottom: -60px;
+  bottom: -20px;
   width: 100%;
   max-width: 1024px;
 }
@@ -82,7 +82,7 @@
 }
 
 .headerSearchText {
-  color: lightgray;
+  color: rgb(195, 162, 162);
   cursor: pointer;
 }
 

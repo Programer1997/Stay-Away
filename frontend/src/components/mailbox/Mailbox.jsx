@@ -7,7 +7,7 @@ const Mailbox = () => {
       <span className="mailDescription">Sign up and we can send you the best deals</span>
 
     <div className="mail">
-      <input type="text" placeholder="Email" />
+      <input type="text" placeholder="welcome@gmail.com" />
       <button>Subscribe</button>
     </div>
     </div>

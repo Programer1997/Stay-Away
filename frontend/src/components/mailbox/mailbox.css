@@ -16,6 +16,7 @@
 }
 .mailDescription{
     padding-right: 10px;
+    margin-bottom: 5px;
 }
 .mail{
     display: flex;
@@ -23,19 +24,27 @@
     gap: 20px;
 }
 .mail>input{
-    width: 300px;
-    height: 30px;
+    width: 350px;
+    height: 40px;
     border: none;
     margin-right: 10px;
 }
+.mail>input:focus{
+    outline: none;
+}
 .mail>button{
-    width: 300px;
+    width: 350px;
     height: 40px;
     background-color: rgb(225, 33, 174);
     color: white;
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    font-style: italic;
+}
+.mail>button:hover{
+    background-color: rgb(186, 28, 144);
+    transition: 0.8s;
 }
 
 

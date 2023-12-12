@@ -137,3 +137,34 @@
     margin-right: 5px;
   }
 }
+
+.timestamp {
+  font-size: 0.8em;
+  color: #888;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.message-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.message-container.my-message {
+  justify-content: flex-end;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px;
+  max-width: 60%;
+}
+
+.my-message .message {
+  background-color: #a1c9f1;
+}
+
+.other-message .message {
+  background-color: #e7e7e7;
+}

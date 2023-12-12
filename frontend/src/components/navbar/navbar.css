@@ -1,6 +1,5 @@
 .navbar{
     width: 100%;
-    
     background-color: blueviolet;
     display: flex;
     justify-content: center !important;
@@ -17,21 +16,21 @@
     position: relative;
   }
   
+  
   .logo{
     font-weight: 500;
     cursor: pointer;
-    background-color: white;
-    padding: 5px;
+    background-color: transparent;
+    color: #f1f1f1 !important;
+    padding: 10px;
     border-radius: 10px;
-    width: 80px;
+    width: 120px !important;
     height: 30px;
-    
 
   }
   .logo:hover{
-    background-color: rgb(194, 184, 184);
-    color: rgb(128, 9, 240);
-    transition: 0.5s;
+    background-color: rgb(125, 73, 173);
+    transition: 0.8s;
   }
   .logoutBtn{
     padding: 5px;

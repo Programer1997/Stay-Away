@@ -5,11 +5,11 @@ const { Schema } = mongoose;
 const HotelSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        //required: true
     },
     type: {
         type: String,
-        required: true
+        //required: true
     },
     city: {
         type: String,
@@ -21,11 +21,11 @@ const HotelSchema = new mongoose.Schema({
     },
     distance: {
         type: String,
-        required: true
+        //required: true
     },
     title: {
         type: String,
-        required: true
+        //required: true
     },
     photos: {
         type: [String],
@@ -55,6 +55,11 @@ const HotelSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    location: {
+        type: { type: String, default: 'Point' },
+        coordinates: [Number] // [longitude, latitude]
+      },
 });
 
 

@@ -6,7 +6,9 @@ import { verifyAdmin } from '../utils/token.js';
 import { countByCityWithRooms } from '../controllers/roomController.js';
 
 const router = express.Router();
-
+//CRUD TESTING PURPOSE to user Postman without authetication : 
+router.post('/new',createHotel); //testing purpose to created from postMan
+router.put('/new/:id', updateHotel); 
 
 //CREATE
 router.post('/',verifyAdmin,createHotel);

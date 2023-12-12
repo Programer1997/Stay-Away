@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.scss";
 
 const GetStarted = (props) => {
-  const { firstName, showForm, setShowForm, setAnimation } = props;
+  const { firstName, setShowForm, setAnimation } = props;
 
   const handleShowForm = () => {
     console.log("handle show form working on");

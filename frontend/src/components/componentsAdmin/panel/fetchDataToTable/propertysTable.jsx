@@ -56,7 +56,7 @@ const TableData = ({ nameColumns }) => {
                 userName={property.user.email}
                 address={property.address}
                 city={property.city}
-                price={property.price}
+                price={property.cheapestPrice}
                 className={index % 2 === 0 ? "evenRow" : ""}
                 handleEdit={(dataUpdated) => {
                   updateProperty(dataUpdated);

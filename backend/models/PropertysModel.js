@@ -11,6 +11,9 @@ const propertySchema = new mongoose.Schema({
     coordinates: [Number] // [longitude, latitude]
   },
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  photos : {
+    type:String
+  }
   // Otros campos
 });
 

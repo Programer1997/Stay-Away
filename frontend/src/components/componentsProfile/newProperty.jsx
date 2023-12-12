@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-//import axios from "axios";
+import axios from "axios";
 import { AuthContext } from "../../context/authContext";
 //import { getLocation } from "../../hooks/geoLib";
 
@@ -10,12 +10,17 @@ const NewPropertyForm = (props) => {
 
   const [propertyData, setPropertyData] = useState({
     title: "",
-    description: "",
-    price: "",
+    desc: "",
+    cheapestPrice: "",
     address: "",
+    rating: "5",
     city: "",
     photos: [], // save photos here
     user: user.details._id,
+    location: {
+      type: "Point",
+      coordinates: [43.226, -79.875],
+    },
   });
 
   const handleChange = (e) => {
@@ -23,36 +28,33 @@ const NewPropertyForm = (props) => {
     setPropertyData({ ...propertyData, [name]: value });
   };
 
+  /*
   const handlePhotoChange = (e) => {
     const files = Array.from(e.target.files);
-    //console.log(files);
     const formData = new FormData();
     files.forEach((file, i) => {
-      formData.append(`photo${i}`, file);
-      //console.log(formData);
+      formData.append(`photos`, file);
     });
-    //console.log(formData);
 
-    // Realizar la petición a tu servidor aquí para subir las fotos
-    // Por ejemplo:
-    /*axios.post("/property/register", formData).then((response) => {
-      //   // Guardar las rutas de las fotos en el state de la propiedad
+    axios.post("/property/register", formData).then((response) => {
       setPropertyData({ ...propertyData, photos: response.data.photos });
-    });*/
-  };
+    });
+  };*/
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Realizar la petición POST al servidor para guardar la propiedad
     // Por ejemplo:
-    // axios.post('/api/properties', propertyData).then((response) => {
-    //   console.log(response.data); // Datos de la propiedad guardada
-    // }).catch((error) => {
-    //   console.error(error);
-    // });
-    console.log("handle submit working on", propertyData);
-    setShowForm(false);
-    setAnimation(false);
+    axios
+      .post("/hotels/new", propertyData)
+      .then((response) => {
+        console.log("Property created:", response.data);
+        setShowForm(false);
+        setAnimation(false);
+      })
+      .catch((error) => {
+        console.error("Error creating property: ", error);
+      });
   };
 
   return (
@@ -60,6 +62,7 @@ const NewPropertyForm = (props) => {
       onSubmit={handleSubmit}
       className={`formNewProperty ${animation ? "active" : ""}`}
     >
+      <legend>Lets to Set it ! your New Property</legend>
       <input
         type="text"
         name="title"
@@ -69,16 +72,16 @@ const NewPropertyForm = (props) => {
       />
       <input
         type="text"
-        name="description"
+        name="desc"
         placeholder="Description"
-        value={propertyData.description}
+        value={propertyData.desc}
         onChange={handleChange}
       />
       <input
         type="number"
-        name="price"
+        name="cheapestPrice"
         placeholder="Price"
-        value={propertyData.price}
+        value={propertyData.cheapestPrice}
         onChange={handleChange}
       />
       <input
@@ -95,7 +98,7 @@ const NewPropertyForm = (props) => {
         value={propertyData.city}
         onChange={handleChange}
       />
-      <input type="file" name="photos" multiple onChange={handlePhotoChange} />
+      {/*<input className="fileButton" type="file" name="photos" multiple />*/}
       <button type="submit" className="btn btn-success">
         Save Property
       </button>

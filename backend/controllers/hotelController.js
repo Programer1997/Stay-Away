@@ -53,7 +53,7 @@ export const getAllHotels = async (req, res, next) => {
     const hotels = await Hotel.find({
       ...others,
       cheapestPrice: { $gt: min | 1, $lt: max || 99999 },
-    }).limit(req.query.limit);
+    }).limit(req.query.limit).populate('user','email'); //addintion Populate
     res.status(200).json(hotels);
   } catch (err) {
     next(err);

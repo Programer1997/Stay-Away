@@ -11,7 +11,7 @@ import "./becomeHost.scss";
 
 export default function BecomeHost() {
   const { propertiesByUser } = usePropertyContext();
-  //console.log(propertiesByUser);
+  console.log(propertiesByUser);
   const { user } = useContext(AuthContext);
   //getUserProperties(user.details._id);
   //console.log(user);
@@ -48,6 +48,7 @@ export default function BecomeHost() {
                   rating={property.rating}
                   price={property.cheapestPrice}
                   desc={property.desc}
+                  //photos={property.photos}
                 />
               );
             })

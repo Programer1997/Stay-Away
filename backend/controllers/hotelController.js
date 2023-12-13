@@ -66,7 +66,7 @@ export const getAllHotels = async (req, res, next) => {
 //Get properties By User : 
 export const getPropertiesByUser = async (req, res, next) => {
   const userId = req.params.id; //id from frontend
-  console.log(userId);
+  //console.log(userId);
   try {
     const properties = await Hotel.find({ user: userId });
     res.status(200).json(properties);

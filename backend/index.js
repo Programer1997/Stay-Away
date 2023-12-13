@@ -1,4 +1,5 @@
 import express from 'express'
+//import path from 'path';
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import authRoute from './routes/auth.js'
@@ -23,6 +24,29 @@ const io = new Server(server, {
         credentials: true
     }
 });
+
+//middlewares:
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(express.static("public"));
+//app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+
+app.use('/api/auth', authRoute)
+app.use('/api/hotels', hotelsRoute)
+app.use('/api/rooms', roomsRoute)
+app.use('/api/users', usersRoute)
+
+app.use('/api/property', propertyRoute)
+app.use('/api/bookings', bookingsRoute)
+app.use('/api/location', locationRoute)
+
+// Routes
+app.use('/api/auth', authRoute);
+app.use('/api/hotels', hotelsRoute);
+app.use('/api/rooms', roomsRoute);
+app.use('/api/users', usersRoute);
+app.use('/api/reviews', reviewsRoute);
 
 //multer Files uploading
 const storage = multer.diskStorage({
@@ -57,31 +81,12 @@ mongoose.connect(process.env.MONGO, {
     throw err;
 });
 
-//middlewares:
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-app.use(express.static("public"));
+
 
 mongoose.connection.on('connected', () => {
     console.log('MongoDB connected!');
 });
 
-app.use('/api/auth', authRoute)
-app.use('/api/hotels', hotelsRoute)
-app.use('/api/rooms', roomsRoute)
-app.use('/api/users', usersRoute)
-
-app.use('/api/property', propertyRoute)
-app.use('/api/bookings', bookingsRoute)
-app.use('/api/location', locationRoute)
-
-// Routes
-app.use('/api/auth', authRoute);
-app.use('/api/hotels', hotelsRoute);
-app.use('/api/rooms', roomsRoute);
-app.use('/api/users', usersRoute);
-app.use('/api/reviews', reviewsRoute);
 
 // Socket.io Chat Logic
 io.on('connection', (socket) => {

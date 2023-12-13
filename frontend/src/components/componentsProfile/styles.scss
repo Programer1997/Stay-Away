@@ -126,10 +126,13 @@
     gap: 2%;
     margin-bottom:2% ;
     h3 { 
+      text-transform: capitalize;
 
     }
     .imagesLayout{
+      width: 100%;
       img {
+        width: 100%;
 
       }
       .imagesLayoutSmall{

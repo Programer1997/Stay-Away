@@ -16,7 +16,7 @@ export default function Profile() {
   });
 
   useEffect(() => {
-    Axios.get(`/users/${id}`, { withCredentials: true })
+    Axios.get(`/api/users/${id}`, { withCredentials: true })
       .then((response) => {
         setUserData(response.data);
         setCurrentUser({
@@ -37,7 +37,7 @@ export default function Profile() {
 
   const postDataServer = (currentUser) => {
     Axios.put(
-      `/users/${id}`,
+      `/api/users/${id}`,
       {
         firstName: currentUser.fname,
         lastName: currentUser.lname,

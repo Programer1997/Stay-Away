@@ -6,9 +6,12 @@ export default function propertyCards(props) {
       <h3>{props.name ? props.name : props.title.slice(0, 25)}</h3>
       <div className="imagesLayout">
         {props.img1 ? <img src={props.img1} alt="img1" /> : null}
-        {/*props.photos && props.photos.length > 0 ? (
-          <img src={`/images${props.photos[0].slice(14)}`} alt="property" />
-        ) : null*/}
+        {props.photos && props.photos.length > 0 ? (
+          <img
+            src={`http://localhost:8000/images/${props.photos[0].slice(14)}`}
+            alt="property"
+          />
+        ) : null}
         <div className="imagesLayoutSmall">
           {props.img2 ? <img src={props.img2} alt="img2" /> : null}
           {props.img3 ? <img src={props.img3} alt="img3" /> : null}

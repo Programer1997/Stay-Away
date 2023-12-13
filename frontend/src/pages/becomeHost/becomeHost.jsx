@@ -48,7 +48,7 @@ export default function BecomeHost() {
                   rating={property.rating}
                   price={property.cheapestPrice}
                   desc={property.desc}
-                  //photos={property.photos}
+                  photos={property.photos}
                 />
               );
             })

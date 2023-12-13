@@ -32,6 +32,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
 //app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
+
 app.use('/api/auth', authRoute)
 app.use('/api/hotels', hotelsRoute)
 app.use('/api/rooms', roomsRoute)

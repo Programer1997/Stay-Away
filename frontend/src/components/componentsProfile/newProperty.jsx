@@ -73,7 +73,7 @@ const NewPropertyForm = (props) => {
     }
 
     try {
-      const res = await axios.post(`/upload`, formData);
+      const res = await axios.post(`/api/upload`, formData);
       //console.log(res.data.files); //i  got just the array of elements
       //console.log(res.data); //got URLS
       setPropertyData({ ...propertyData, photos: [...res.data.photoUrls] });
@@ -88,7 +88,7 @@ const NewPropertyForm = (props) => {
     //upload();
 
     try {
-      const response = await axios.post("/hotels/new", propertyData);
+      const response = await axios.post("/api/hotels/new", propertyData);
       console.log("Property created:", response.data);
       setShowForm(false);
       setAnimation(false);

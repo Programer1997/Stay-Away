@@ -13,6 +13,7 @@ import http from 'http';
 import {Server} from 'socket.io';
 import reviewsRoute from './routes/review.js';
 dotenv.config();
+import multer from 'multer';
 
 const app = express();
 const server = http.createServer(app);
@@ -21,6 +22,29 @@ const io = new Server(server, {
         origin: 'http://localhost:3000', 
         credentials: true
     }
+});
+
+//multer Files uploading
+const storage = multer.diskStorage({
+    destination:function(req,file,cb){
+        return cb (null,"./public/images")
+    },
+    filename : function(req,file,cb){
+        return cb (null,`${Date.now()}_${file.originalname}`)
+    }
+});
+const upload = multer({storage}).array('photos');
+
+app.post('/api/upload',(req,res)=>{
+    upload(req, res, (err) => {
+        //console.log(req.body);
+        console.log(req.files);
+        const photoUrls = req.files.map((file)=>`/public/images/${file.filename}`);
+        if (err) {
+          return res.json({ success: false, err });
+        }
+        return res.json({ success: true, files: req.files,photoUrls }); // Devuelve los archivos subidos
+      });
 });
 
 // Database Connection

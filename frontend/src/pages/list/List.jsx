@@ -10,10 +10,10 @@ import "./list.css";
 
 const List = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
-  const [dates, setDates] = useState(location.state.dates);
+  const [destination, setDestination] = useState(location.state.destination); //valor que escribo
+  const [dates, setDates] = useState(location.state.dates); //fechas qeu designo
   const [openDate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(location.state.options);
+  const [options, setOptions] = useState(location.state.options); //options que quiero 1 room, ninos etc
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 

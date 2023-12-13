@@ -1,24 +1,44 @@
 import { format } from "date-fns";
 import { useState } from "react";
 import { DateRange } from "react-date-range";
-import { useLocation } from "react-router-dom";
 import Header from "../../components/header/Header";
 import SearchItem from "../../components/itemSearch/SearchItem";
 import Navbar from "../../components/navbar/Navbar";
+import { useSearch } from "../../context/SearchContext";
 import useFetch from "../../hooks/useFetch";
 import "./list.css";
 
+// TODO: move to right folder as this is just a helper
+const generateUrl = (params) => {
+  const newParams = new URLSearchParams();
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value) {
+      newParams.set(key, value);
+    } else {
+      newParams.delete(key);
+    }
+  });
+
+  return `/hotels?${newParams.toString()}`;
+};
+
 const List = () => {
-  const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
-  const [dates, setDates] = useState(location.state.dates);
+  const {
+    city,
+    dates: searchDates,
+    options: searchOptions,
+    type
+  } = useSearch();
+  const [destination, setDestination] = useState(city);
+  const [dates, setDates] = useState(searchDates);
   const [openDate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(location.state.options);
+  const [options, setOptions] = useState(searchOptions);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0}&max=${max || 99999}`
+    generateUrl({ city, min, max, type })
   );
 
   //handle Click for btn:
@@ -42,9 +62,12 @@ const List = () => {
               <div className="lsItem">
                 <label>Check-in Date</label>
                 <span onClick={() => setOpenDate(!openDate)}>{`${format(
-                  dates[0].startDate,
+                  dates[0]?.startDate || new Date(),
                   "MM/dd/yyyy"
-                )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
+                )} to ${format(
+                  dates[0]?.endDate || new Date(),
+                  "MM/dd/yyyy"
+                )}`}</span>
                 {openDate && (
                   <DateRange
                     onChange={(item) => setDates([item.selection])}
@@ -82,7 +105,7 @@ const List = () => {
                       type="number"
                       min={1}
                       className="lsOptionInput"
-                      placeholder={options.adult}
+                      placeholder={options.adult ?? 1}
                     />
                   </div>
                   <div className="lsOptionItem">
@@ -91,7 +114,7 @@ const List = () => {
                       type="number"
                       min={0}
                       className="lsOptionInput"
-                      placeholder={options.children}
+                      placeholder={options.children ?? 0}
                     />
                   </div>
                   <div className="lsOptionItem">
@@ -100,7 +123,7 @@ const List = () => {
                       type="number"
                       min={1}
                       className="lsOptionInput"
-                      placeholder={options.room}
+                      placeholder={options.room ?? 1}
                     />
                   </div>
                 </div>

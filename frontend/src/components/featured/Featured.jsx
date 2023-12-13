@@ -1,13 +1,25 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
 import useFetch from "../../hooks/useFetch";
 import "./featured.css";
 
 const Featured = () => {
+  const navigate = useNavigate();
+  const { dispatch } = useContext(SearchContext);
+
   const { data, loading, error } = useFetch("/hotels/countByCityWithRooms");
 
   const { data: citiesData } = useFetch("/hotels/distinctCities");
 
   if (loading) return <div>Loading, please wait...</div>;
   if (error) return <div>Error occurred: {error.message}</div>;
+
+  const handleFeatureClick = (city) => {
+    dispatch({ type: "NEW_SEARCH", payload: { city } });
+
+    navigate("/hotels");
+  };
 
   return (
     <div className="featured">
@@ -18,7 +30,11 @@ const Featured = () => {
       ) : (
         <>
           {citiesData.map((city, index) => (
-            <div className="featuredItem" key={city._id}>
+            <div
+              className="featuredItem"
+              key={city._id}
+              onClick={() => handleFeatureClick(city.city)}
+            >
               <img
                 src={city.hotels[0].imgSrc} // Replace with actual image URL property from your city data
                 alt={city.city} // Replace with actual city name property

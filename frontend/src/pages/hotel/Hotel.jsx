@@ -121,7 +121,7 @@ const Hotel = () => {
             </span>
             <span className="hotelPriceHighlight">
               Book a stay over ${data.cheapestPrice} at this property and get a
-              free airport taxi
+              special promotion!
             </span>
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (
@@ -143,8 +143,7 @@ const Hotel = () => {
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days} stay!</h1>
                 <span>
-                  Located in the real heart of Krakow, this property has an
-                  excellent location score of 9.8!
+                  Let your beautiful holiday begins here, with us!
                 </span>
                 <h2>
                   <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}

@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
+import { useSearch } from "../../context/SearchContext";
 import useFetch from "../../hooks/useFetch";
 import "./property.css";
 
 const Property = () => {
   const { data, loading } = useFetch("/hotels/countByType");
+  const navigate = useNavigate();
+  const { dispatch } = useSearch();
 
   const images = [
     "https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&q=80&w=1920&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -12,6 +16,12 @@ const Property = () => {
     "https://plus.unsplash.com/premium_photo-1681922761648-d5e2c3972982?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   ];
 
+  const handleClick = (type) => {
+    dispatch({ type });
+
+    navigate("/hotels");
+  };
+
   return (
     <div className="pList">
       {loading ? (
@@ -20,7 +30,11 @@ const Property = () => {
         <>
           {data &&
             images.map((img, i) => (
-              <div className="pListItem" key={i}>
+              <div
+                className="pListItem"
+                key={i}
+                onClick={() => handleClick(data[i]?.type)}
+              >
                 <img src={img} alt="" className="pListImg" />
                 <div className="pListTitles">
                   <h1>{data[i]?.type}</h1>

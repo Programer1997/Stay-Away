@@ -39,7 +39,7 @@ const ChatPage = () => {
 
     const formatTimestamp = (isoString) => {
         const date = new Date(isoString);
-        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
+        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     };
 
     return (
@@ -48,8 +48,8 @@ const ChatPage = () => {
             <div className="chatPage">
                 <div className="chatContainer">
                     {/* <div className="chatSidebar"> */}
-                        {/* Static contacts - can be made dynamic if needed */}
-                        {/* <div className="chatContact">Momma</div>
+                    {/* Static contacts - can be made dynamic if needed */}
+                    {/* <div className="chatContact">Momma</div>
                         <div className="chatContact">Daddy</div>
                     </div> */}
                     <div className="chatMain">

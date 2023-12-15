@@ -49,6 +49,9 @@ export const getSingleHotel = async (req, res, next) => {
 //GET ALL HOTELS:
 export const getAllHotels = async (req, res, next) => {
   const { min, max, ...others } = req.query;
+  //console.log(req.query);
+  //console.log(others);
+
   try {
     const hotels = await Hotel.find({
       ...others,
@@ -59,6 +62,19 @@ export const getAllHotels = async (req, res, next) => {
     next(err);
   }
 };
+
+//Get properties By User : 
+export const getPropertiesByUser = async (req, res, next) => {
+  const userId = req.params.id; //id from frontend
+  //console.log(userId);
+  try {
+    const properties = await Hotel.find({ user: userId });
+    res.status(200).json(properties);
+  } catch (error) {
+    next(error);
+  }
+};
+
 //Model for pickinbg cities out of db:
 export const countByCity = async (req, res, next) => {
     const cities = req.query.cities.split(",");

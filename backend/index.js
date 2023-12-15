@@ -1,4 +1,5 @@
 import express from 'express'
+//import path from 'path';
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import authRoute from './routes/auth.js'
@@ -13,6 +14,7 @@ import http from 'http';
 import {Server} from 'socket.io';
 import reviewsRoute from './routes/review.js';
 dotenv.config();
+import multer from 'multer';
 
 const app = express();
 const server = http.createServer(app);
@@ -24,25 +26,13 @@ const io = new Server(server, {
     }
 });
 
-// Database Connection
-mongoose.connect(process.env.MONGO, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log('Connected to MongoDB');
-}).catch(err => {
-    throw err;
-});
-
 //middlewares:
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
+//app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
-mongoose.connection.on('connected', () => {
-    console.log('MongoDB connected!');
-});
 
 app.use('/api/auth', authRoute)
 app.use('/api/hotels', hotelsRoute)
@@ -59,6 +49,46 @@ app.use('/api/hotels', hotelsRoute);
 app.use('/api/rooms', roomsRoute);
 app.use('/api/users', usersRoute);
 app.use('/api/reviews', reviewsRoute);
+
+//multer Files uploading
+const storage = multer.diskStorage({
+    destination:function(req,file,cb){
+        return cb (null,"./public/images")
+    },
+    filename : function(req,file,cb){
+        return cb (null,`${Date.now()}_${file.originalname}`)
+    }
+});
+const upload = multer({storage}).array('photos');
+
+app.post('/api/upload',(req,res)=>{
+    upload(req, res, (err) => {
+        //console.log(req.body);
+        console.log(req.files);
+        const photoUrls = req.files.map((file)=>`/public/images/${file.filename}`);
+        if (err) {
+          return res.json({ success: false, err });
+        }
+        return res.json({ success: true, files: req.files,photoUrls }); // Devuelve los archivos subidos
+      });
+});
+
+// Database Connection
+mongoose.connect(process.env.MONGO, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('Connected to MongoDB');
+}).catch(err => {
+    throw err;
+});
+
+
+
+mongoose.connection.on('connected', () => {
+    console.log('MongoDB connected!');
+});
+
 
 
 io.on('connection', (socket) => {

@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   customers: [],
   updateCustomer: () => {},
   deleteCustomer: () => {},
-  postCustomer: () => {}
+  postCustomer: () => {},
 };
 
 const CustomerContext = createContext(INITIAL_STATE); //step1
@@ -15,7 +15,7 @@ export const CustomerContextProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("/users/testing")
+      .get("/api/users/testing")
       .then((res) => setCustomers(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -23,7 +23,7 @@ export const CustomerContextProvider = ({ children }) => {
   const updateCustomer = (user) => {
     const { _id, firstName, lastName, email } = user;
     axios
-      .put(`/users/testing/${_id}`, { firstName, lastName, email })
+      .put(`/api/users/testing/${_id}`, { firstName, lastName, email })
       .then((response) => {
         const updatedUser = response.data;
 
@@ -45,7 +45,7 @@ export const CustomerContextProvider = ({ children }) => {
   const deleteCustomer = (user_id) => {
     // delete the user
     axios
-      .delete(`/users/testing/${user_id}`)
+      .delete(`/api/users/testing/${user_id}`)
       .then((response) => {
         console.log(response.data);
       })
@@ -63,11 +63,11 @@ export const CustomerContextProvider = ({ children }) => {
   };
   const postCustomer = (customerData) => {
     axios
-      .post("/auth/register", {
+      .post("/api/auth/register", {
         firstName: customerData.firstName,
         lastName: customerData.lastName,
         email: customerData.email,
-        password: customerData.password
+        password: customerData.password,
       })
       .then((response) => {
         setCustomers((prev) => {

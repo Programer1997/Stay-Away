@@ -1,7 +1,7 @@
 import express from 'express';
 import Hotel from '../models/Hotel.js';
 import { createError } from '../utils/error.js';
-import  {createHotel, updateHotel, deleteHotel, getSingleHotel, getAllHotels, countByCity, countByType, getHotelRooms, distinctCities} from "../controllers/hotelController.js"
+import  {createHotel,getPropertiesByUser, updateHotel, deleteHotel, getSingleHotel, getAllHotels, countByCity, countByType, getHotelRooms, distinctCities} from "../controllers/hotelController.js"
 import { verifyAdmin } from '../utils/token.js';
 import { countByCityWithRooms } from '../controllers/roomController.js';
 
@@ -9,6 +9,7 @@ const router = express.Router();
 //CRUD TESTING PURPOSE to user Postman without authetication : 
 router.post('/new',createHotel); //testing purpose to created from postMan
 router.put('/new/:id', updateHotel); 
+router.get('/newFind/:id', getPropertiesByUser); 
 
 //CREATE
 router.post('/',verifyAdmin,createHotel);

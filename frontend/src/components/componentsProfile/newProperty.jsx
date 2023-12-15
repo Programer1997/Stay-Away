@@ -4,10 +4,10 @@ import { AuthContext } from "../../context/authContext";
 //import { getLocation } from "../../hooks/geoLib";
 
 const NewPropertyForm = (props) => {
-  const { setShowForm, animation, setAnimation } = props;
+  const { setShowForm, showForm, animation, setAnimation } = props;
   const { user } = useContext(AuthContext);
   //console.log(user);
-
+  const [file, setFile] = useState([]);
   const [propertyData, setPropertyData] = useState({
     title: "",
     desc: "",
@@ -40,21 +40,61 @@ const NewPropertyForm = (props) => {
       setPropertyData({ ...propertyData, photos: response.data.photos });
     });
   };*/
-
-  const handleSubmit = (e) => {
+  const handlePhotoChange = (e) => {
+    setFile(e.target.files);
+  };
+  /*const upload = (e) => {
     e.preventDefault();
-    // Realizar la petición POST al servidor para guardar la propiedad
-    // Por ejemplo:
+    const formData = new FormData();
+    //formData.append("photos", file);
+    for (let i = 0; i < file.length; i++) {
+      formData.append("photos", file[i]);
+    }
     axios
-      .post("/hotels/new", propertyData)
-      .then((response) => {
-        console.log("Property created:", response.data);
-        setShowForm(false);
-        setAnimation(false);
+      .post(`/upload`, formData)
+      .then((res) => {
+        //console.log(res.data.files); //i  got just the array of elements
+        //console.log(res.data); //got URLS
+        setPropertyData({ ...propertyData, photos: [...res.data.photoUrls] });
+        console.log(propertyData);
       })
-      .catch((error) => {
-        console.error("Error creating property: ", error);
+      .catch((err) => {
+        console.log(err);
       });
+  };
+*/
+  const upload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    // Añadir archivos a formData
+
+    for (let i = 0; i < file.length; i++) {
+      formData.append("photos", file[i]);
+    }
+
+    try {
+      const res = await axios.post(`/api/upload`, formData);
+      //console.log(res.data.files); //i  got just the array of elements
+      //console.log(res.data); //got URLS
+      setPropertyData({ ...propertyData, photos: [...res.data.photoUrls] });
+      //console.log("dtaa from upload", propertyData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //upload();
+
+    try {
+      const response = await axios.post("/api/hotels/new", propertyData);
+      console.log("Property created:", response.data);
+      setShowForm(false);
+      setAnimation(false);
+    } catch (error) {
+      console.error("Error creating property: ", error);
+    }
   };
 
   return (
@@ -69,6 +109,7 @@ const NewPropertyForm = (props) => {
         placeholder="Title"
         value={propertyData.title}
         onChange={handleChange}
+        required
       />
       <input
         type="text"
@@ -76,6 +117,7 @@ const NewPropertyForm = (props) => {
         placeholder="Description"
         value={propertyData.desc}
         onChange={handleChange}
+        required
       />
       <input
         type="number"
@@ -83,6 +125,7 @@ const NewPropertyForm = (props) => {
         placeholder="Price"
         value={propertyData.cheapestPrice}
         onChange={handleChange}
+        required
       />
       <input
         type="text"
@@ -90,6 +133,7 @@ const NewPropertyForm = (props) => {
         placeholder="Address"
         value={propertyData.address}
         onChange={handleChange}
+        required
       />
       <input
         type="text"
@@ -98,7 +142,14 @@ const NewPropertyForm = (props) => {
         value={propertyData.city}
         onChange={handleChange}
       />
-      {/*<input className="fileButton" type="file" name="photos" multiple />*/}
+      <input
+        className="fileButton"
+        type="file"
+        name="photos"
+        multiple
+        onChange={handlePhotoChange}
+      />
+      {<button onClick={upload}>File Upload</button>}
       <button type="submit" className="btn btn-success">
         Save Property
       </button>

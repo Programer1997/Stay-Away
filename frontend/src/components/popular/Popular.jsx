@@ -2,7 +2,7 @@ import useFetch from "../../hooks/useFetch";
 import "./popular.css";
 
 const Popular = () => {
-  const { data, loading } = useFetch("/hotels?featured=true");
+  const { data, loading } = useFetch("/api/hotels?featured=true");
 
   return (
     <div className="fp">

@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+import { AuthContext } from "./authContext";
 const INITIAL_STATE = {
   updateProperty: () => {},
   createProperty: () => {},
   deleteProperty: () => {},
+  getUserProperties: () => {},
   property: [],
 };
 
@@ -13,22 +14,27 @@ export const PropertyContext = React.createContext(INITIAL_STATE);
 
 //step 2 :  create Provider :
 export const PropertyContextProvider = ({ children }) => {
+  const { user } = useContext(AuthContext);
+  //console.log("sicne context properties", user);
   const [property, setProperty] = useState([]);
+  const [propertiesByUser, setPropertiesByUser] = useState([]);
 
   //get property data :
   React.useEffect(() => {
     axios
-      .get("/hotels/")
+      .get("/api/hotels/")
       .then((response) => {
         setProperty(response.data);
       })
       .catch((error) => {
         console.log("Server can not get property info from data base", error);
       });
+    //get properties from User LOGGED  :
+    getUserProperties(user.details._id);
   }, []);
   const deleteProperty = (_id) => {
     axios
-      .delete(`/hotels/${_id}`)
+      .delete(`/api/hotels/${_id}`)
       .then((res) => {
         setProperty((prev) => {
           const newProperties = [...prev];
@@ -48,11 +54,11 @@ export const PropertyContextProvider = ({ children }) => {
     const { _id, price, city, address } = updatedData;
     if (updatedData) {
       axios
-        .put(`/hotels/${_id}`, { price, address, city })
+        .put(`/api/hotels/${_id}`, { price, address, city })
         .then((response) => {
           console.log(response.data);
           axios
-            .get("/hotels/")
+            .get("/api/hotels/")
             .then((response) => {
               setProperty(response.data);
             })
@@ -70,7 +76,25 @@ export const PropertyContextProvider = ({ children }) => {
     }
   };
 
-  const value = { property, deleteProperty, updateProperty };
+  const getUserProperties = (_id) => {
+    axios
+      .get(`/api/hotels/newFind/${_id}`)
+      .then((response) => {
+        setPropertiesByUser(response.data);
+        //console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Server can not get property info from data base", error);
+      });
+  };
+
+  const value = {
+    property,
+    deleteProperty,
+    updateProperty,
+    getUserProperties,
+    propertiesByUser,
+  };
 
   return (
     <PropertyContext.Provider value={value}>

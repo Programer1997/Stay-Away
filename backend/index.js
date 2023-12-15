@@ -21,6 +21,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: 'http://localhost:3000', 
+        methods: ["GET", "POST"],
         credentials: true
     }
 });
@@ -89,12 +90,17 @@ mongoose.connection.on('connected', () => {
 });
 
 
-// Socket.io Chat Logic
-io.on('connection', (socket) => {
-    console.log('User connected', socket.id);
 
-    socket.on('send_message', (data) => {
-        io.emit('receive_message', data);
+io.on('connection', (socket) => {
+    console.log(`User Connected: ${socket.id}`);
+
+    socket.on('request_my_id', () => {
+        socket.emit('my_id', socket.id);
+    });
+
+    socket.on('send_message', (message) => {
+        const timestamp = new Date().toISOString();
+        io.emit('receive_message', { ...message, timestamp, senderId: socket.id});
     });
 
     socket.on('disconnect', () => {

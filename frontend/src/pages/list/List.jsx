@@ -20,7 +20,7 @@ const generateUrl = (params) => {
     }
   });
 
-  return `/hotels?${newParams.toString()}`;
+  return `/api/hotels?${newParams.toString()}`;
 };
 
 const List = () => {

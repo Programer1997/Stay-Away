@@ -32,8 +32,8 @@ const Featured = () => {
           {citiesData.slice(0, 3).map((city, index) => (
             <div className="featuredItem" key={city._id}>
               <img
-                src={city.hotels[0].imgSrc} 
-                alt={city.city} 
+                src={city.hotels[0].imgSrc}
+                alt={city.city}
                 className="featuredImg"
               />
               <div className="featuredTitles">
@@ -45,7 +45,6 @@ const Featured = () => {
         </>
       )}
     </div>
-
   );
 };
 

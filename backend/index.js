@@ -12,6 +12,8 @@ import cookieParser from 'cookie-parser'
 import http from 'http';
 import {Server} from 'socket.io';
 import reviewsRoute from './routes/review.js';
+import multer from 'multer';
+//import path from 'path';
 dotenv.config();
 
 const app = express();
@@ -23,6 +25,30 @@ const io = new Server(server, {
         credentials: true
     }
 });
+
+//multer Files uploading
+const storage = multer.diskStorage({
+    destination:function(req,file,cb){
+        return cb (null,"./public/images")
+    },
+    filename : function(req,file,cb){
+        return cb (null,`${Date.now()}_${file.originalname}`)
+    }
+});
+const upload = multer({storage}).array('photos');
+
+app.post('/api/upload',(req,res)=>{
+    upload(req, res, (err) => {
+        //console.log(req.body);
+        console.log(req.files);
+        const photoUrls = req.files.map((file)=>file.filename);
+        if (err) {
+          return res.json({ success: false, err });
+        }
+        return res.json({ success: true, files: req.files,photoUrls }); // Devuelve los archivos subidos
+      });
+});
+
 
 // Database Connection
 mongoose.connect(process.env.MONGO, {
@@ -39,6 +65,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
+//app.use('/images', express.static(path.join(__dirname, 'public')));
 
 mongoose.connection.on('connected', () => {
     console.log('MongoDB connected!');

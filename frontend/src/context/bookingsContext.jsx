@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   updatedBooking: () => {},
   deleteBooking: () => {},
   bookingsData: [],
-  createBooking: () => {}
+  createBooking: () => {},
 };
 //Step 1  create context  :
 const BookingContext = createContext(INITIAL_STATE);

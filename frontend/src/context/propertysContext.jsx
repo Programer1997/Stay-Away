@@ -1,10 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
-
+import React, { useState, useContext } from "react";
+//import { AuthContext } from "./authContext";
 const INITIAL_STATE = {
   updateProperty: () => {},
   createProperty: () => {},
   deleteProperty: () => {},
+  getUserProperties: () => {},
+  getReloadProperties: () => {},
   property: [],
 };
 
@@ -13,7 +15,10 @@ export const PropertyContext = React.createContext(INITIAL_STATE);
 
 //step 2 :  create Provider :
 export const PropertyContextProvider = ({ children }) => {
+  //const { user } = useContext(AuthContext);
+  //console.log("sicne context properties", user.details._id);
   const [property, setProperty] = useState([]);
+  const [propertiesByUser, setPropertiesByUser] = useState([]);
 
   //get property data :
   React.useEffect(() => {
@@ -25,6 +30,8 @@ export const PropertyContextProvider = ({ children }) => {
       .catch((error) => {
         console.log("Server can not get property info from data base", error);
       });
+    //get properties from User LOGGED  :
+    //getUserProperties(user.details._id);
   }, []);
   const deleteProperty = (_id) => {
     axios
@@ -70,7 +77,37 @@ export const PropertyContextProvider = ({ children }) => {
     }
   };
 
-  const value = { property, deleteProperty, updateProperty };
+  const getUserProperties = (_id) => {
+    axios
+      .get(`/hotels/newFind/${_id}`)
+      .then((response) => {
+        setPropertiesByUser(response.data);
+        //console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Server can not get property info from data base", error);
+      });
+  };
+  const getReloadProperties = (_id) => {
+    axios
+      .get(`/hotels/newFind/${_id}`)
+      .then((response) => {
+        setPropertiesByUser(response.data);
+        //console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Server can not get property info from data base", error);
+      });
+  };
+
+  const value = {
+    property,
+    deleteProperty,
+    updateProperty,
+    getUserProperties,
+    propertiesByUser,
+    getReloadProperties,
+  };
 
   return (
     <PropertyContext.Provider value={value}>

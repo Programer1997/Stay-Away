@@ -11,7 +11,8 @@
   margin: 0 auto;
 }
 .profile-navbar .logo a {
-  color: blueviolet !important;
+  color:white !important;
+  font-weight: 500;
 }
 
 .profile-navbar .logo {

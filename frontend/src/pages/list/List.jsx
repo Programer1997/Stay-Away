@@ -20,7 +20,7 @@ const generateUrl = (params) => {
     }
   });
 
-  return `/hotels?${newParams.toString()}`;
+  return `/api/hotels?${newParams.toString()}`;
 };
 
 const List = () => {
@@ -28,10 +28,10 @@ const List = () => {
     city,
     dates: searchDates,
     options: searchOptions,
-    type
+    type,
   } = useSearch();
-  const [destination, setDestination] = useState(city);
-  const [dates, setDates] = useState(searchDates);
+  const [destination, setDestination] = useState(city); //valor que escribo
+  const [dates, setDates] = useState(searchDates); //fechas qeu designo
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(searchOptions);
   const [min, setMin] = useState(undefined);

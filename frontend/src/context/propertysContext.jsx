@@ -19,11 +19,12 @@ export const PropertyContextProvider = ({ children }) => {
   //console.log("sicne context properties", user.details._id);
   const [property, setProperty] = useState([]);
   const [propertiesByUser, setPropertiesByUser] = useState([]);
+  const [propertiesByUser, setPropertiesByUser] = useState([]);
 
   //get property data :
   React.useEffect(() => {
     axios
-      .get("/hotels/")
+      .get("/api/hotels/")
       .then((response) => {
         setProperty(response.data);
       })
@@ -35,7 +36,7 @@ export const PropertyContextProvider = ({ children }) => {
   }, []);
   const deleteProperty = (_id) => {
     axios
-      .delete(`/hotels/${_id}`)
+      .delete(`/api/hotels/${_id}`)
       .then((res) => {
         setProperty((prev) => {
           const newProperties = [...prev];
@@ -55,11 +56,11 @@ export const PropertyContextProvider = ({ children }) => {
     const { _id, price, city, address } = updatedData;
     if (updatedData) {
       axios
-        .put(`/hotels/${_id}`, { price, address, city })
+        .put(`/api/hotels/${_id}`, { price, address, city })
         .then((response) => {
           console.log(response.data);
           axios
-            .get("/hotels/")
+            .get("/api/hotels/")
             .then((response) => {
               setProperty(response.data);
             })

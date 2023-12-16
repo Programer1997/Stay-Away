@@ -13,7 +13,7 @@ export default function Register() {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
   };
   const [formData, setFormData] = useState(initialValues);
 
@@ -28,18 +28,18 @@ export default function Register() {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
   const clean = () => {
     setFormData(initialValues);
   };
   const postDataServer = (formData) => {
-    Axios.post("/auth/register", {
+    Axios.post("/api/auth/register", {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
-      password: formData.password
+      password: formData.password,
     })
       .then((response) => {
         console.log(response.data);

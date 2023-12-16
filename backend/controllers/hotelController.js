@@ -49,6 +49,9 @@ export const getSingleHotel = async (req, res, next) => {
 //GET ALL HOTELS:
 export const getAllHotels = async (req, res, next) => {
   const { min, max, ...others } = req.query;
+  //console.log(req.query);
+  //console.log(others);
+
   try {
     const hotels = await Hotel.find({
       ...others,

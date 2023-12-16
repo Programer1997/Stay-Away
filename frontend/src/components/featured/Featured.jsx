@@ -8,9 +8,9 @@ const Featured = () => {
   const navigate = useNavigate();
   const { dispatch } = useContext(SearchContext);
 
-  const { data, loading, error } = useFetch("/hotels/countByCityWithRooms");
+  const { data, loading, error } = useFetch("/api/hotels/countByCityWithRooms");
 
-  const { data: citiesData } = useFetch("/hotels/distinctCities");
+  const { data: citiesData } = useFetch("/api/hotels/distinctCities");
 
   if (loading) return <div>Loading, please wait...</div>;
   if (error) return <div>Error occurred: {error.message}</div>;

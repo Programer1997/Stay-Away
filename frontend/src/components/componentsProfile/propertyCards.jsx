@@ -3,14 +3,18 @@ import React from "react";
 export default function propertyCards(props) {
   //console.log(props.rooms);
   //console.log(props.photos[0].slice(14));
-  //const url = `http://localhost:8000/images/${props.photos[0]}`;
-  //console.log(url);
+
   return (
     <div className="cardsPropertiesContainer">
       <h3>{props.name ? props.name : props.title.slice(0, 25)}</h3>
       <div className="imagesLayout">
-        {/*props.photos && !props.rooms ? <img src={url} alt="property" /> : null*/}
-        {props.photos && props.photos.length > 0 ? (
+        {props.photos && !props.rooms ? (
+          <img
+            src={`http://localhost:8000/${props.photos[0]}`}
+            alt="property"
+          />
+        ) : null}
+        {props.photos && props.photos.length > 0 && props.rooms ? (
           <img src={props.photos[0]} alt="property" />
         ) : null}
 

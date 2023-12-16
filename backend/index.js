@@ -15,8 +15,9 @@ import {Server} from 'socket.io';
 import reviewsRoute from './routes/review.js';
 import multer from 'multer';
 //import path from 'path';
+import cors from 'cors';
 dotenv.config();
-import multer from 'multer';
+
 
 const app = express();
 const server = http.createServer(app);
@@ -42,6 +43,7 @@ mongoose.connect(process.env.MONGO, {
 });
 
 //middlewares:
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -80,7 +82,7 @@ app.post('/api/upload',(req,res)=>{
     upload(req, res, (err) => {
         //console.log(req.body);
         console.log(req.files);
-        const photoUrls = req.files.map((file)=>`/public/images/${file.filename}`);
+        const photoUrls = req.files.map((file)=>`/images/${file.filename}`);
         if (err) {
           return res.json({ success: false, err });
         }

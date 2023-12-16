@@ -47,39 +47,6 @@ const NewPropertyForm = (props) => {
   const handlePhotoChange = (e) => {
     setFile(e.target.files);
   };
-  /*const upload = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    //formData.append("photos", file);
-    for (let i = 0; i < file.length; i++) {
-      formData.append("photos", file[i]);
-    }
-    const formData = new FormData();
-    //formData.append("photos", file);
-    for (let i = 0; i < file.length; i++) {
-      formData.append("photos", file[i]);
-    }
-    axios
-      .post(`/upload`, formData)
-      .then((res) => {
-        //console.log(res.data.files); //i  got just the array of elements
-        //console.log(res.data); //got URLS
-        setPropertyData({ ...propertyData, photos: [...res.data.photoUrls] });
-        console.log(propertyData);
-      .post(`/upload`, formData)
-      .then((res) => {
-        //console.log(res.data.files); //i  got just the array of elements
-        //console.log(res.data); //got URLS
-        setPropertyData({ ...propertyData, photos: [...res.data.photoUrls] });
-        console.log(propertyData);
-      })
-      .catch((err) => {
-        console.log(err);
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-*/
 
   const upload = async (e) => {
     e.preventDefault();
@@ -130,7 +97,6 @@ const NewPropertyForm = (props) => {
         value={propertyData.title}
         onChange={handleChange}
         required
-        required
       />
       <input
         type="text"
@@ -138,7 +104,6 @@ const NewPropertyForm = (props) => {
         placeholder="Description"
         value={propertyData.desc}
         onChange={handleChange}
-        required
         required
       />
       <input
@@ -148,7 +113,6 @@ const NewPropertyForm = (props) => {
         value={propertyData.cheapestPrice}
         onChange={handleChange}
         required
-        required
       />
       <input
         type="text"
@@ -156,7 +120,6 @@ const NewPropertyForm = (props) => {
         placeholder="Address"
         value={propertyData.address}
         onChange={handleChange}
-        required
         required
       />
       <input

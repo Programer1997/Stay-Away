@@ -28,28 +28,7 @@ const io = new Server(server, {
     }
 });
 
-//multer Files uploading
-const storage = multer.diskStorage({
-    destination:function(req,file,cb){
-        return cb (null,"./public/images")
-    },
-    filename : function(req,file,cb){
-        return cb (null,`${Date.now()}_${file.originalname}`)
-    }
-});
-const upload = multer({storage}).array('photos');
 
-app.post('/api/upload',(req,res)=>{
-    upload(req, res, (err) => {
-        //console.log(req.body);
-        console.log(req.files);
-        const photoUrls = req.files.map((file)=>file.filename);
-        if (err) {
-          return res.json({ success: false, err });
-        }
-        return res.json({ success: true, files: req.files,photoUrls }); // Devuelve los archivos subidos
-      });
-});
 
 
 // Database Connection

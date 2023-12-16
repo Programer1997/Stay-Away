@@ -3,12 +3,10 @@ import ProfileNav from "../../components/profileNav/ProfileNav";
 import Footer from "../../components/footer/Footer";
 import { AuthContext } from "../../context/authContext.js";
 import { usePropertyContext } from "../../context/propertysContext.jsx";
-import { usePropertyContext } from "../../context/propertysContext.jsx";
+
 import GetStarted from "../../components/componentsProfile/getStarted.jsx";
 import BenefitsBecomeHost from "../../components/componentsProfile/benefitsBecomeHost.jsx";
 import NewProperty from "../../components/componentsProfile/newProperty.jsx";
-import PropertiesUser from "../../components/componentsProfile/propertyCards.jsx";
-import "./becomeHost.scss";
 import PropertiesUser from "../../components/componentsProfile/propertyCards.jsx";
 import "./becomeHost.scss";
 

@@ -19,7 +19,6 @@ export const PropertyContextProvider = ({ children }) => {
   //console.log("sicne context properties", user.details._id);
   const [property, setProperty] = useState([]);
   const [propertiesByUser, setPropertiesByUser] = useState([]);
-  const [propertiesByUser, setPropertiesByUser] = useState([]);
 
   //get property data :
   React.useEffect(() => {
@@ -80,7 +79,7 @@ export const PropertyContextProvider = ({ children }) => {
 
   const getUserProperties = (_id) => {
     axios
-      .get(`/hotels/newFind/${_id}`)
+      .get(`/api/hotels/newFind/${_id}`)
       .then((response) => {
         setPropertiesByUser(response.data);
         //console.log(response.data);
@@ -91,7 +90,7 @@ export const PropertyContextProvider = ({ children }) => {
   };
   const getReloadProperties = (_id) => {
     axios
-      .get(`/hotels/newFind/${_id}`)
+      .get(`/api/hotels/newFind/${_id}`)
       .then((response) => {
         setPropertiesByUser(response.data);
         //console.log(response.data);

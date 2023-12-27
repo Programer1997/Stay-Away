@@ -15,9 +15,7 @@ const NewPropertyForm = (props) => {
     address: "",
     rating: "5",
     city: "",
-    photos: [
-      "https://media.istockphoto.com/id/1372828302/photo/luxurious-hotel-room-with-luggage-trolley-double-bed-night-tables-tv-set-and-seaview-from-the.jpg?s=1024x1024&w=is&k=20&c=CFlBloO3PZwCZhBnyBuev_BYQbomFRNjwEzsmIv4VBo=",
-    ], // save photos here
+    photos: [], // save photos here
     imgSrc:
       "https://images.contentstack.io/v3/assets/blt00454ccee8f8fe6b/blt55aa6fe881d45976/6091355f1671db1046c1a59c/UK_CityofLondon_UK_Header.jpg",
     user: user.details._id,
@@ -47,29 +45,8 @@ const NewPropertyForm = (props) => {
   const handlePhotoChange = (e) => {
     setFile(e.target.files);
   };
-  /*const upload = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    //formData.append("photos", file);
-    for (let i = 0; i < file.length; i++) {
-      formData.append("photos", file[i]);
-    }
-    axios
-      .post(`/upload`, formData)
-      .then((res) => {
-        //console.log(res.data.files); //i  got just the array of elements
-        //console.log(res.data); //got URLS
-        setPropertyData({ ...propertyData, photos: [...res.data.photoUrls] });
-        console.log(propertyData);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-*/
 
-  const upload = async (e) => {
-    e.preventDefault();
+  const upload = async () => {
     const formData = new FormData();
     // Añadir archivos a formData
 
@@ -78,11 +55,11 @@ const NewPropertyForm = (props) => {
     }
 
     try {
-      const res = await axios.post(`/upload`, formData);
+      const res = await axios.post(`/api/upload`, formData);
       console.log(res.data);
       //console.log(res.data.files); //i  got just the array of elements
       //console.log(res.data); //got URLS
-      //setPropertyData({ ...propertyData, photos: [...res.data.photoUrls] });
+      setPropertyData({ ...propertyData, photos: [...res.data.photoUrls] });
       //console.log("dtaa from upload", propertyData);
     } catch (err) {
       console.log(err);
@@ -91,10 +68,10 @@ const NewPropertyForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    upload(e);
+    await upload();
 
     try {
-      const response = await axios.post("/hotels/new", propertyData);
+      const response = await axios.post("/api/hotels/new", propertyData);
       console.log("Property created:", response.data);
       setShowForm(false);
       setAnimation(false);

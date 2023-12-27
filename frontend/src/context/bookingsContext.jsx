@@ -15,7 +15,7 @@ export const BookingContextProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("/bookings/")
+      .get("/api/bookings/")
       .then((response) => {
         setBookingsData(response.data);
       })
@@ -26,7 +26,7 @@ export const BookingContextProvider = ({ children }) => {
 
   const deleteBooking = (_id) => {
     axios
-      .delete(`/bookings/${_id}`)
+      .delete(`/api/bookings/${_id}`)
       .then((res) => {
         console.log(res.data);
       })
@@ -46,11 +46,11 @@ export const BookingContextProvider = ({ children }) => {
     const { _id, checkInDate, checkOutDate } = updatedData;
     if (updatedData) {
       axios
-        .put(`/bookings/${_id}`, { checkInDate, checkOutDate })
+        .put(`/api/bookings/${_id}`, { checkInDate, checkOutDate })
         .then((response) => {
           console.log(response.data);
           axios
-            .get("/bookings/")
+            .get("/api/bookings/")
             .then((response) => {
               setBookingsData(response.data);
             })

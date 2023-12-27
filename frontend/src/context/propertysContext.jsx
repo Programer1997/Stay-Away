@@ -23,7 +23,7 @@ export const PropertyContextProvider = ({ children }) => {
   //get property data :
   React.useEffect(() => {
     axios
-      .get("/hotels/")
+      .get("/api/hotels/")
       .then((response) => {
         setProperty(response.data);
       })
@@ -35,7 +35,7 @@ export const PropertyContextProvider = ({ children }) => {
   }, []);
   const deleteProperty = (_id) => {
     axios
-      .delete(`/hotels/${_id}`)
+      .delete(`/api/hotels/${_id}`)
       .then((res) => {
         setProperty((prev) => {
           const newProperties = [...prev];
@@ -55,11 +55,11 @@ export const PropertyContextProvider = ({ children }) => {
     const { _id, price, city, address } = updatedData;
     if (updatedData) {
       axios
-        .put(`/hotels/${_id}`, { price, address, city })
+        .put(`/api/hotels/${_id}`, { price, address, city })
         .then((response) => {
           console.log(response.data);
           axios
-            .get("/hotels/")
+            .get("/api/hotels/")
             .then((response) => {
               setProperty(response.data);
             })
@@ -79,7 +79,7 @@ export const PropertyContextProvider = ({ children }) => {
 
   const getUserProperties = (_id) => {
     axios
-      .get(`/hotels/newFind/${_id}`)
+      .get(`/api/hotels/newFind/${_id}`)
       .then((response) => {
         setPropertiesByUser(response.data);
         //console.log(response.data);
@@ -90,7 +90,7 @@ export const PropertyContextProvider = ({ children }) => {
   };
   const getReloadProperties = (_id) => {
     axios
-      .get(`/hotels/newFind/${_id}`)
+      .get(`/api/hotels/newFind/${_id}`)
       .then((response) => {
         setPropertiesByUser(response.data);
         //console.log(response.data);

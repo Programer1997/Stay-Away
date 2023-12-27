@@ -2,7 +2,7 @@ import {
   faCircleArrowLeft,
   faCircleArrowRight,
   faCircleXmark,
-  faLocationDot
+  faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react";
@@ -29,7 +29,7 @@ const Hotel = () => {
   const [openModal, setOpenModal] = useState(false);
 
   //fetch:
-  const { data, loading, error, reFetch } = useFetch(`/hotels/find/${id}`);
+  const { data, loading, error, reFetch } = useFetch(`/api/hotels/find/${id}`);
 
   //dispatch for /hotels bc we are passing dates:
   const { dates, options } = useContext(SearchContext);
